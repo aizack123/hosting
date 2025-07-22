@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Menú </title>
+	<link rel="stylesheet" href="estilo.css">
+	
+</head>
+<body>
+	
+	<nav>
+		<ul class="menu-horizontal">
+			<li><a href="#">Inicio</a></li>
+			<li>
+				<a href="#">Codigos</a>
+				<ul class="menu-vertical">
+					<li><a href="#">telgram</a></li>
+					<li><a href="index.php?action=ejecutar-python">ericsson</a></li>
+					<li><a href="#">mail</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">code 2</a>
+				<ul class="menu-vertical">
+					<li><a href="#">otros1</a></li>
+					<li><a href="#">otros2</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Contacto</a></li>
+
+		</ul>
+	</nav>
+
+	<div id="output">
+        <h2>Salida de Python:</h2>
+        <?php
+        if (isset($_GET['action']) && $_GET['action'] == 'ejecutar-python') {
+            // Ejecuta el script Python
+            $command = 'python3 /ruta/al/script/ejemplo.py';  // Ajusta la ruta al archivo Python
+            $output = shell_exec($command);
+            echo "<pre>$output</pre>";
+        }
+        ?>
+    </div>
+
+	
+</body>
+</html>
