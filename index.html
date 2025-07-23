@@ -1,196 +1,1215 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mapa de Localizaciones - Bolivia</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Leaflet CSS incorporado -->
-    <style>
-        /*! leaflet v1.9.4 - estilo mínimo */
-        .leaflet-layer {width:100%;height:100%;}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;}
-        .leaflet-container {font:12px/1.5 "Helvetica Neue",Arial,Helvetica,sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent;}
-        .leaflet-pane {position:absolute;top:0;left:0;right:0;bottom:0;}.leaflet-tile {user-select:none;-webkit-user-drag:none;}
-        .leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-image-layer,.leaflet-pane > svg path,.leaflet-tile-container {pointer-events:none;}
-        .leaflet-marker-icon, .leaflet-marker-shadow {display:block;}.leaflet-clickable {cursor:pointer;}.leaflet-control {position:relative;}
-        .leaflet-top,.leaflet-bottom {position:absolute;z-index:1000;pointer-events:none;}.leaflet-top{top:0;}.leaflet-right{right:0;}
-        .leaflet-bottom{bottom:0;}.leaflet-left{left:0;}.leaflet-control{clear:none;float:none;}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,0.65);}
-        .leaflet-control a,.leaflet-control a:hover {background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;}
-        .leaflet-touch .leaflet-control a {width:30px;height:30px;line-height:30px;}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;}
-    </style>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
     
-    <!-- Implementación completa de Leaflet y toGeoJSON incorporada -->
-    <script>
-    // Versión minimizada de Leaflet 1.9.4
-    !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t=t||self).L=e()}(this,function(){});
-    
-    // Implementación completa de toGeoJSON
-    window.toGeoJSON = {
-        kml: function(doc) {
-            var styles = {}, layers = [], result = {type: "FeatureCollection", features: layers};
-            function get(node, tag) { return node.getElementsByTagName(tag); }
-            function attr(node, attr) { return node.getAttribute(attr); }
-            function txt(node) { return node.textContent; }
-            function parseStyle(node) {
-                var style = {}, i, j, icons = get(node, "IconStyle");
-                if (icons.length) {
-                    var icon = icons[0], hrefs = get(icon, "href");
-                    if (hrefs.length) style.iconUrl = txt(hrefs[0]);
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cdc466b328ce762744b3ee24ecfe809c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
                 }
-                return style;
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
             }
-            function coords(str) {
-                var pts = str.trim().split(/\s+/), out = [];
-                for (var i = 0; i < pts.length; i++) {
-                    var c = pts[i].split(",");
-                    out.push([parseFloat(c[0]), parseFloat(c[1])]);
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
                 }
-                return out;
-            }
-            function kmlColor(str) {
-                if (!str) return;
-                var color = str.split("");
-                return "#" + color[6] + color[7] + color[4] + color[5] + color[2] + color[3];
-            }
-            function parsePlacemark(node) {
-                var geom, name = txt(get(node, "name")[0] || {}), style = {}, 
-                    styleUrl = attr(node, "styleUrl"), extended = get(node, "ExtendedData");
-                if (styleUrl && styleUrl.indexOf("#") === 0) {
-                    var id = styleUrl.slice(1);
-                    if (styles[id]) style = styles[id];
-                }
-                var points = get(node, "Point"), lines = get(node, "LineString"),
-                    polygons = get(node, "Polygon"), multi = get(node, "MultiGeometry");
-                if (points.length) {
-                    var coords = txt(get(points[0], "coordinates")[0]);
-                    geom = {type: "Point", coordinates: coords(coords)[0]};
-                } else if (lines.length) {
-                    var coords = txt(get(lines[0], "coordinates")[0]);
-                    geom = {type: "LineString", coordinates: coords(coords)};
-                } else if (polygons.length) {
-                    var rings = get(polygons[0], "LinearRing"), coords = [];
-                    for (var i = 0; i < rings.length; i++) {
-                        coords.push(coords(txt(get(rings[i], "coordinates")[0])));
-                    }
-                    geom = {type: "Polygon", coordinates: coords};
-                } else if (multi.length) {
-                    var geoms = [];
-                    for (var i = 0; i < multi[0].childNodes.length; i++) {
-                        var child = multi[0].childNodes[i];
-                        if (child.nodeType === 1) {
-                            var parsed = parsePlacemark(child);
-                            if (parsed) geoms.push(parsed.geometry);
-                        }
-                    }
-                    if (geoms.length === 1) geom = geoms[0];
-                    else if (geoms.length > 1) geom = {type: "GeometryCollection", geometries: geoms};
-                }
-                if (!geom) return null;
-                var properties = {name: name};
-                for (var key in style) properties[key] = style[key];
-                if (extended.length) {
-                    var datas = get(extended[0], "Data");
-                    for (var i = 0; i < datas.length; i++) {
-                        var data = datas[i], name = attr(data, "name"), value = txt(get(data, "value")[0] || "");
-                        properties[name] = value;
-                    }
-                }
-                return {type: "Feature", geometry: geom, properties: properties};
-            }
-            var styleNodes = get(doc, "Style");
-            for (var i = 0; i < styleNodes.length; i++) {
-                var node = styleNodes[i], id = attr(node, "id");
-                if (id) styles[id] = parseStyle(node);
-            }
-            var placemarks = get(doc, "Placemark");
-            for (var i = 0; i < placemarks.length; i++) {
-                var feature = parsePlacemark(placemarks[i]);
-                if (feature) layers.push(feature);
-            }
-            return result;
-        }
-    };
-    
-    // Implementación completa de Leaflet
-    (function() {
-        // Código completo de Leaflet 1.9.4 (~150 líneas)
-        // [Se ha omitido por brevedad pero debe incluirse]
-        // Ver: https://unpkg.com/leaflet@1.9.4/dist/leaflet.js
-    })();
-    </script>
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
 </head>
 <body>
-    <div id="map"></div>
-    <div class="info">
-        <h3>Mapa de Localizaciones</h3>
-        <p>Actualizado: 2025-07-23 02:26</p>
-    </div>
     
-    <script>
-    // Inicialización del mapa
-    document.addEventListener('DOMContentLoaded', function() {
-        // Mapa centrado en Bolivia
-        var map = L.map('map').setView([-16.2902, -63.5887], 6);
-        
-        // Capa base de OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            maxZoom: 18
-        }).addTo(map);
-        
-        // Cargar KML
-        fetch('https://raw.githubusercontent.com/aizack123/mapas/main/geo.kml')
-            .then(function(response) {
-                if (!response.ok) throw new Error('HTTP ' + response.status);
-                return response.text();
-            })
-            .then(function(kmlText) {
-                try {
-                    var parser = new DOMParser();
-                    var kmlDoc = parser.parseFromString(kmlText, 'text/xml');
-                    var geoJson = toGeoJSON.kml(kmlDoc);
-                    
-                    L.geoJSON(geoJson, {
-                        pointToLayer: function(feature, latlng) {
-                            return L.marker(latlng, {
-                                title: feature.properties.name || 'Punto'
-                            });
-                        },
-                        onEachFeature: function(feature, layer) {
-                            if (feature.properties && feature.properties.name) {
-                                layer.bindPopup(feature.properties.name);
-                            }
-                        }
-                    }).addTo(map);
-                } catch(e) {
-                    console.error('Error procesando KML:', e);
-                    alert('Error al procesar los datos del mapa.');
-                }
-            })
-            .catch(function(err) {
-                console.error('Error cargando KML:', err);
-                alert('No se pudieron cargar los datos del mapa.');
-            });
-    });
-    </script>
     
-    <style>
-        body { margin: 0; padding: 0; }
-        #map { height: 100vh; width: 100%; }
-        .info {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 10px;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-            font-family: Arial, sans-serif;
-            max-width: 300px;
-        }
-    </style>
+            <div class="folium-map" id="map_cdc466b328ce762744b3ee24ecfe809c" ></div>
+        
 </body>
-</html>
+<script>
     
+    
+            var map_cdc466b328ce762744b3ee24ecfe809c = L.map(
+                "map_cdc466b328ce762744b3ee24ecfe809c",
+                {
+                    center: [-16.2902, -63.5887],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_41151cbdf2b57fb96a9c9e4a1de94aaf = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_41151cbdf2b57fb96a9c9e4a1de94aaf.addTo(map_cdc466b328ce762744b3ee24ecfe809c);
+        
+    
+            var marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_c5085416a6fb2a239a360f27cc1f1114 = L.marker(
+                [-15.51194, -67.45112],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_f04849d38d53532a7f3632b5c9bc2020 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_86f73fe93b2d19f4f62625a118470c93 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fa8758083748c008004ac9c1e487af06 = $(`<div id="html_fa8758083748c008004ac9c1e487af06" style="width: 100.0%; height: 100.0%;"><b>SUAPI_KM73_TSI</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_86f73fe93b2d19f4f62625a118470c93.setContent(html_fa8758083748c008004ac9c1e487af06);
+            
+        
+
+        marker_c5085416a6fb2a239a360f27cc1f1114.bindPopup(popup_86f73fe93b2d19f4f62625a118470c93)
+        ;
+
+        
+    
+    
+                marker_c5085416a6fb2a239a360f27cc1f1114.setIcon(icon_f04849d38d53532a7f3632b5c9bc2020);
+            
+    
+            var marker_f450374d7acf8f6c0ba75f159e2059a9 = L.marker(
+                [-15.53391, -67.46283],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_ce25ba0bcb2ef31e9b68127122fce22b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4efb0e0ab44840c44e570a62d1f9a394 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ed7f759a0929af1b0a347b14c3721df9 = $(`<div id="html_ed7f759a0929af1b0a347b14c3721df9" style="width: 100.0%; height: 100.0%;"><b>ORO_VERDE_TSI</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_4efb0e0ab44840c44e570a62d1f9a394.setContent(html_ed7f759a0929af1b0a347b14c3721df9);
+            
+        
+
+        marker_f450374d7acf8f6c0ba75f159e2059a9.bindPopup(popup_4efb0e0ab44840c44e570a62d1f9a394)
+        ;
+
+        
+    
+    
+                marker_f450374d7acf8f6c0ba75f159e2059a9.setIcon(icon_ce25ba0bcb2ef31e9b68127122fce22b);
+            
+    
+            var marker_6996f44b7d8ea3f7a15ca9a0a9cda685 = L.marker(
+                [-15.79165, -67.50969],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_6253b6862f79b5a23fe8e25f7f6a7cdb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2a8dfcb1358032e767f68020ccbeefc8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a8fb7110f879fe9a6bba31ba6cac1008 = $(`<div id="html_a8fb7110f879fe9a6bba31ba6cac1008" style="width: 100.0%; height: 100.0%;"><b>SAN_LORENZO_CARANAVI_TSI</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_2a8dfcb1358032e767f68020ccbeefc8.setContent(html_a8fb7110f879fe9a6bba31ba6cac1008);
+            
+        
+
+        marker_6996f44b7d8ea3f7a15ca9a0a9cda685.bindPopup(popup_2a8dfcb1358032e767f68020ccbeefc8)
+        ;
+
+        
+    
+    
+                marker_6996f44b7d8ea3f7a15ca9a0a9cda685.setIcon(icon_6253b6862f79b5a23fe8e25f7f6a7cdb);
+            
+    
+            var marker_b0cf0aec2d6a5758921ea89d96aa1ca6 = L.marker(
+                [-15.59653, -67.3995],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_0952e0833335e8f1fd1b33b9db39a98d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6f5ba4d2fbeb123a52e11e79cff0a5a9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c37ef9f5cd23dbaa37c9c9f390cc25b9 = $(`<div id="html_c37ef9f5cd23dbaa37c9c9f390cc25b9" style="width: 100.0%; height: 100.0%;"><b>CASERIOS_NUEVE_TSI</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_6f5ba4d2fbeb123a52e11e79cff0a5a9.setContent(html_c37ef9f5cd23dbaa37c9c9f390cc25b9);
+            
+        
+
+        marker_b0cf0aec2d6a5758921ea89d96aa1ca6.bindPopup(popup_6f5ba4d2fbeb123a52e11e79cff0a5a9)
+        ;
+
+        
+    
+    
+                marker_b0cf0aec2d6a5758921ea89d96aa1ca6.setIcon(icon_0952e0833335e8f1fd1b33b9db39a98d);
+            
+    
+            var marker_d11c94da38099463c7eee4163cd21a5b = L.marker(
+                [-15.54763, -67.45009],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_0bf23e36284164c707317609fab50f4b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_19fe8018ace730414a8d6cb1cb0f2870 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9ff818e0c8478603c8fec187816f2f3f = $(`<div id="html_9ff818e0c8478603c8fec187816f2f3f" style="width: 100.0%; height: 100.0%;"><b>SANTA_ROSA_ALTO_BENI_TSI</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_19fe8018ace730414a8d6cb1cb0f2870.setContent(html_9ff818e0c8478603c8fec187816f2f3f);
+            
+        
+
+        marker_d11c94da38099463c7eee4163cd21a5b.bindPopup(popup_19fe8018ace730414a8d6cb1cb0f2870)
+        ;
+
+        
+    
+    
+                marker_d11c94da38099463c7eee4163cd21a5b.setIcon(icon_0bf23e36284164c707317609fab50f4b);
+            
+    
+            var marker_1e77aa5b9edcc5c2b24a56b4c1e0e866 = L.marker(
+                [-15.66208, -67.56223],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_324c8337d219178daddfd7d797d48dce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e3bfb90d352afab072c6748a7df053f5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d25045fccd340f61928cc0711f53d203 = $(`<div id="html_d25045fccd340f61928cc0711f53d203" style="width: 100.0%; height: 100.0%;"><b>KOLLASUYO_B_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_e3bfb90d352afab072c6748a7df053f5.setContent(html_d25045fccd340f61928cc0711f53d203);
+            
+        
+
+        marker_1e77aa5b9edcc5c2b24a56b4c1e0e866.bindPopup(popup_e3bfb90d352afab072c6748a7df053f5)
+        ;
+
+        
+    
+    
+                marker_1e77aa5b9edcc5c2b24a56b4c1e0e866.setIcon(icon_324c8337d219178daddfd7d797d48dce);
+            
+    
+            var marker_420f2a9efd01a968da4400830a78056a = L.marker(
+                [-15.59653, -67.3995],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_f962c00594f863010fe029c727148e46 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c196303d2520fc3bbc5c11c88ca00b05 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7c61eac353c08bf16614390c0721772e = $(`<div id="html_7c61eac353c08bf16614390c0721772e" style="width: 100.0%; height: 100.0%;"><b>CASERIOS_NUEVE_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_c196303d2520fc3bbc5c11c88ca00b05.setContent(html_7c61eac353c08bf16614390c0721772e);
+            
+        
+
+        marker_420f2a9efd01a968da4400830a78056a.bindPopup(popup_c196303d2520fc3bbc5c11c88ca00b05)
+        ;
+
+        
+    
+    
+                marker_420f2a9efd01a968da4400830a78056a.setIcon(icon_f962c00594f863010fe029c727148e46);
+            
+    
+            var marker_0ef426ce0fa139298401540b09935a0b = L.marker(
+                [-15.54763, -67.45009],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_3bb6a5b2dbf280bd52c03d2691b333d3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_048617dd114670bf5b4a38a5ad246298 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f1543541ab2e036ee4315a00cc37fc11 = $(`<div id="html_f1543541ab2e036ee4315a00cc37fc11" style="width: 100.0%; height: 100.0%;"><b>SANTA_ROSA_ALTO_BENI_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_048617dd114670bf5b4a38a5ad246298.setContent(html_f1543541ab2e036ee4315a00cc37fc11);
+            
+        
+
+        marker_0ef426ce0fa139298401540b09935a0b.bindPopup(popup_048617dd114670bf5b4a38a5ad246298)
+        ;
+
+        
+    
+    
+                marker_0ef426ce0fa139298401540b09935a0b.setIcon(icon_3bb6a5b2dbf280bd52c03d2691b333d3);
+            
+    
+            var marker_0d172dc4bc7586969a2347306e03d682 = L.marker(
+                [-15.53391, -67.46283],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_96f7942856cb904743e4583982f369fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bbf7a12dccac830cdec7532dd1faf50d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_99daaee0ecc3d2b3a1c1c8eb8ea90054 = $(`<div id="html_99daaee0ecc3d2b3a1c1c8eb8ea90054" style="width: 100.0%; height: 100.0%;"><b>ORO_VERDE_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_bbf7a12dccac830cdec7532dd1faf50d.setContent(html_99daaee0ecc3d2b3a1c1c8eb8ea90054);
+            
+        
+
+        marker_0d172dc4bc7586969a2347306e03d682.bindPopup(popup_bbf7a12dccac830cdec7532dd1faf50d)
+        ;
+
+        
+    
+    
+                marker_0d172dc4bc7586969a2347306e03d682.setIcon(icon_96f7942856cb904743e4583982f369fc);
+            
+    
+            var marker_61f47d45a1be1cdf62ad49204564b4d2 = L.marker(
+                [-15.79165, -67.50969],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_d2a83015f203958715aa5a6a2ddf24e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_655edb95afe2d04abed360d173618966 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_125d49a4de6dd1eb8a07df6413202501 = $(`<div id="html_125d49a4de6dd1eb8a07df6413202501" style="width: 100.0%; height: 100.0%;"><b>SAN_LORENZO_CARANAVI_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_655edb95afe2d04abed360d173618966.setContent(html_125d49a4de6dd1eb8a07df6413202501);
+            
+        
+
+        marker_61f47d45a1be1cdf62ad49204564b4d2.bindPopup(popup_655edb95afe2d04abed360d173618966)
+        ;
+
+        
+    
+    
+                marker_61f47d45a1be1cdf62ad49204564b4d2.setIcon(icon_d2a83015f203958715aa5a6a2ddf24e6);
+            
+    
+            var marker_e97cf744af88dbb60e6371691505b896 = L.marker(
+                [-15.51194, -67.45112],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_22cd29123aa042037744a8d8021f43d9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7c370c22295de3914f13d8c7f378d429 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_588da610ba9304b7a9f342c54edfcca5 = $(`<div id="html_588da610ba9304b7a9f342c54edfcca5" style="width: 100.0%; height: 100.0%;"><b>SUAPI_KM73_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_7c370c22295de3914f13d8c7f378d429.setContent(html_588da610ba9304b7a9f342c54edfcca5);
+            
+        
+
+        marker_e97cf744af88dbb60e6371691505b896.bindPopup(popup_7c370c22295de3914f13d8c7f378d429)
+        ;
+
+        
+    
+    
+                marker_e97cf744af88dbb60e6371691505b896.setIcon(icon_22cd29123aa042037744a8d8021f43d9);
+            
+    
+            var marker_327c37baa230a94cc35fa05c86359534 = L.marker(
+                [-15.41678, -67.60716],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_5eabf05757c43fab7b6bb184241d94a3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ec3f5ea1716666df6bcc555631b05082 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cb35e3bea6b328a7ff20681c7ebfb17a = $(`<div id="html_cb35e3bea6b328a7ff20681c7ebfb17a" style="width: 100.0%; height: 100.0%;"><b>MAYAYA_PUEBLO_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_ec3f5ea1716666df6bcc555631b05082.setContent(html_cb35e3bea6b328a7ff20681c7ebfb17a);
+            
+        
+
+        marker_327c37baa230a94cc35fa05c86359534.bindPopup(popup_ec3f5ea1716666df6bcc555631b05082)
+        ;
+
+        
+    
+    
+                marker_327c37baa230a94cc35fa05c86359534.setIcon(icon_5eabf05757c43fab7b6bb184241d94a3);
+            
+    
+            var marker_bb6e18faa9d7c65f3a0a4745c213ed4e = L.marker(
+                [-15.50762, -67.47317],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_232407e8df906d1b5541af15cedbfdb3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1d9c9929395e02329a8ca8a906b36c2b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1fee63642d7b82a927c2a40643b1e3c1 = $(`<div id="html_1fee63642d7b82a927c2a40643b1e3c1" style="width: 100.0%; height: 100.0%;"><b>PALMAR_SUAPI_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_1d9c9929395e02329a8ca8a906b36c2b.setContent(html_1fee63642d7b82a927c2a40643b1e3c1);
+            
+        
+
+        marker_bb6e18faa9d7c65f3a0a4745c213ed4e.bindPopup(popup_1d9c9929395e02329a8ca8a906b36c2b)
+        ;
+
+        
+    
+    
+                marker_bb6e18faa9d7c65f3a0a4745c213ed4e.setIcon(icon_232407e8df906d1b5541af15cedbfdb3);
+            
+    
+            var marker_b62346df5e81074d39949f79f3122fdd = L.marker(
+                [-15.35143, -67.55106],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_b7dbf0cc30b0546e8e98d9313c1c305c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_350618b4b5209481f677a25a5f04c739 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7e131c3463a09f86d763cccdc991e495 = $(`<div id="html_7e131c3463a09f86d763cccdc991e495" style="width: 100.0%; height: 100.0%;"><b>AGRARIA_22_DE_JULIO_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_350618b4b5209481f677a25a5f04c739.setContent(html_7e131c3463a09f86d763cccdc991e495);
+            
+        
+
+        marker_b62346df5e81074d39949f79f3122fdd.bindPopup(popup_350618b4b5209481f677a25a5f04c739)
+        ;
+
+        
+    
+    
+                marker_b62346df5e81074d39949f79f3122fdd.setIcon(icon_b7dbf0cc30b0546e8e98d9313c1c305c);
+            
+    
+            var marker_da57b17534fc8b9029ec10cbd01dcfe5 = L.marker(
+                [-15.51073, -67.42295],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_78b5b6d2ef80f59452525d8861ef9aa8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ca7105bc1dbaf5025f898b8a92649c51 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_045e0135956baa05c9af2feda6e86404 = $(`<div id="html_045e0135956baa05c9af2feda6e86404" style="width: 100.0%; height: 100.0%;"><b>SANTA_ANA_DE_MOSETENES_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_ca7105bc1dbaf5025f898b8a92649c51.setContent(html_045e0135956baa05c9af2feda6e86404);
+            
+        
+
+        marker_da57b17534fc8b9029ec10cbd01dcfe5.bindPopup(popup_ca7105bc1dbaf5025f898b8a92649c51)
+        ;
+
+        
+    
+    
+                marker_da57b17534fc8b9029ec10cbd01dcfe5.setIcon(icon_78b5b6d2ef80f59452525d8861ef9aa8);
+            
+    
+            var marker_26349e9dd997d83ba296dd28c54880eb = L.marker(
+                [-15.24191, -67.67519],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_be65859cd89e9135e7779b063587ac0c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_109da7ce4dc8923a8e0bbcf5b5d967a7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ec5b61ef4df2782e705f139d07282add = $(`<div id="html_ec5b61ef4df2782e705f139d07282add" style="width: 100.0%; height: 100.0%;"><b>SAN_PEDRO_DE_LLUQUIMUNI_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_109da7ce4dc8923a8e0bbcf5b5d967a7.setContent(html_ec5b61ef4df2782e705f139d07282add);
+            
+        
+
+        marker_26349e9dd997d83ba296dd28c54880eb.bindPopup(popup_109da7ce4dc8923a8e0bbcf5b5d967a7)
+        ;
+
+        
+    
+    
+                marker_26349e9dd997d83ba296dd28c54880eb.setIcon(icon_be65859cd89e9135e7779b063587ac0c);
+            
+    
+            var marker_d203ce9fa2da4d1addd6195ffb53046a = L.marker(
+                [-15.45081, -67.63455],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_51dbfdb5799d1b5ba1b3f8f0b47e18b7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7477acc32989d47442cfa97dca53f748 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_300618854fa12a5e9f8f0dfacc811d56 = $(`<div id="html_300618854fa12a5e9f8f0dfacc811d56" style="width: 100.0%; height: 100.0%;"><b>TRONCAL_INCAHUARA_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_7477acc32989d47442cfa97dca53f748.setContent(html_300618854fa12a5e9f8f0dfacc811d56);
+            
+        
+
+        marker_d203ce9fa2da4d1addd6195ffb53046a.bindPopup(popup_7477acc32989d47442cfa97dca53f748)
+        ;
+
+        
+    
+    
+                marker_d203ce9fa2da4d1addd6195ffb53046a.setIcon(icon_51dbfdb5799d1b5ba1b3f8f0b47e18b7);
+            
+    
+            var marker_b7c4e9df302fe7daa0467143f3fc1c92 = L.marker(
+                [-15.52325, -67.36039],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_61e1bf1cd55b8275e6d69b7877ba7f0a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ff3fd5b906bf4a3c6d2bef8ee0016742 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8dc13acf2b712412a61ac6e4afc36772 = $(`<div id="html_8dc13acf2b712412a61ac6e4afc36772" style="width: 100.0%; height: 100.0%;"><b>VILLAZON_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_ff3fd5b906bf4a3c6d2bef8ee0016742.setContent(html_8dc13acf2b712412a61ac6e4afc36772);
+            
+        
+
+        marker_b7c4e9df302fe7daa0467143f3fc1c92.bindPopup(popup_ff3fd5b906bf4a3c6d2bef8ee0016742)
+        ;
+
+        
+    
+    
+                marker_b7c4e9df302fe7daa0467143f3fc1c92.setIcon(icon_61e1bf1cd55b8275e6d69b7877ba7f0a);
+            
+    
+            var marker_b3b65a2557c5813562a891d769ee132b = L.marker(
+                [-15.67438, -67.48951],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_a1532949db110d0af40da8740aaa872d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aec53ab63f3288d453e0a23e7dde414e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3ae2b5e8f524f77736a589a93cf9ff6b = $(`<div id="html_3ae2b5e8f524f77736a589a93cf9ff6b" style="width: 100.0%; height: 100.0%;"><b>CO_MULA_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_aec53ab63f3288d453e0a23e7dde414e.setContent(html_3ae2b5e8f524f77736a589a93cf9ff6b);
+            
+        
+
+        marker_b3b65a2557c5813562a891d769ee132b.bindPopup(popup_aec53ab63f3288d453e0a23e7dde414e)
+        ;
+
+        
+    
+    
+                marker_b3b65a2557c5813562a891d769ee132b.setIcon(icon_a1532949db110d0af40da8740aaa872d);
+            
+    
+            var marker_00964b97f79c0e0b5e6e554ac8175e09 = L.marker(
+                [-15.50837, -67.26244],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_9ba708a0d830307eca427643bf84deb6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_da3999f540e23d48598956861a07e931 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64210fa793b51f2062d755c5fa362f58 = $(`<div id="html_64210fa793b51f2062d755c5fa362f58" style="width: 100.0%; height: 100.0%;"><b>INICUA_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_da3999f540e23d48598956861a07e931.setContent(html_64210fa793b51f2062d755c5fa362f58);
+            
+        
+
+        marker_00964b97f79c0e0b5e6e554ac8175e09.bindPopup(popup_da3999f540e23d48598956861a07e931)
+        ;
+
+        
+    
+    
+                marker_00964b97f79c0e0b5e6e554ac8175e09.setIcon(icon_9ba708a0d830307eca427643bf84deb6);
+            
+    
+            var marker_0828ad96ccf63d77577b90903b269be9 = L.marker(
+                [-15.64897, -67.29969],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_5804d4040bd356091053fac37b461316 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bfac962374c6d0af9e27ce3807f71d97 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_793c04b8436ef1c0da7b87907562a5bb = $(`<div id="html_793c04b8436ef1c0da7b87907562a5bb" style="width: 100.0%; height: 100.0%;"><b>ALTO_MERCEDES_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_bfac962374c6d0af9e27ce3807f71d97.setContent(html_793c04b8436ef1c0da7b87907562a5bb);
+            
+        
+
+        marker_0828ad96ccf63d77577b90903b269be9.bindPopup(popup_bfac962374c6d0af9e27ce3807f71d97)
+        ;
+
+        
+    
+    
+                marker_0828ad96ccf63d77577b90903b269be9.setIcon(icon_5804d4040bd356091053fac37b461316);
+            
+    
+            var marker_918914d30ec870f5920d975aa5395e94 = L.marker(
+                [-15.85196, -66.93816],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_65f5110120ca1839c1bf0630eeb81b34 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_282630d5341a8113818a9306218c537f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ec4c948aaf64ea155f6c039c5bea781f = $(`<div id="html_ec4c948aaf64ea155f6c039c5bea781f" style="width: 100.0%; height: 100.0%;"><b>VILLA_EL_TRIUNFO_IRB1_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_282630d5341a8113818a9306218c537f.setContent(html_ec4c948aaf64ea155f6c039c5bea781f);
+            
+        
+
+        marker_918914d30ec870f5920d975aa5395e94.bindPopup(popup_282630d5341a8113818a9306218c537f)
+        ;
+
+        
+    
+    
+                marker_918914d30ec870f5920d975aa5395e94.setIcon(icon_65f5110120ca1839c1bf0630eeb81b34);
+            
+    
+            var marker_ee3face28978df02cf4a329d4b73bd3a = L.marker(
+                [-15.75772, -67.52308],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_08b624ec9367c0915a2ce663acb74388 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5abb529cbbe758f4ab1d8f6eae142503 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_78b6f1ad9ddcd3497fe3ed68b04abce3 = $(`<div id="html_78b6f1ad9ddcd3497fe3ed68b04abce3" style="width: 100.0%; height: 100.0%;"><b>BAJO_ISRAEL_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_5abb529cbbe758f4ab1d8f6eae142503.setContent(html_78b6f1ad9ddcd3497fe3ed68b04abce3);
+            
+        
+
+        marker_ee3face28978df02cf4a329d4b73bd3a.bindPopup(popup_5abb529cbbe758f4ab1d8f6eae142503)
+        ;
+
+        
+    
+    
+                marker_ee3face28978df02cf4a329d4b73bd3a.setIcon(icon_08b624ec9367c0915a2ce663acb74388);
+            
+    
+            var marker_effd5616b56b6eb4724bb16dd0f95e50 = L.marker(
+                [-15.8482, -67.4101],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_b2657f5abb5311e61b6eb2062c4ebafc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_62af3dace18d51b7c010acc5e0863d8f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_142d02969c70c2a760ef5b33ddf580e6 = $(`<div id="html_142d02969c70c2a760ef5b33ddf580e6" style="width: 100.0%; height: 100.0%;"><b>TUPAC_AMARU_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_62af3dace18d51b7c010acc5e0863d8f.setContent(html_142d02969c70c2a760ef5b33ddf580e6);
+            
+        
+
+        marker_effd5616b56b6eb4724bb16dd0f95e50.bindPopup(popup_62af3dace18d51b7c010acc5e0863d8f)
+        ;
+
+        
+    
+    
+                marker_effd5616b56b6eb4724bb16dd0f95e50.setIcon(icon_b2657f5abb5311e61b6eb2062c4ebafc);
+            
+    
+            var marker_3fad9252ba7e6a440787cb6b60006810 = L.marker(
+                [-15.79509, -67.65501],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_428d286dd92f1364517cc5d194e3bfb2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dcce0d3d092cf91ca4ab2f192a53558c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dcbbbb04be2427809f1e7457dd9e5e27 = $(`<div id="html_dcbbbb04be2427809f1e7457dd9e5e27" style="width: 100.0%; height: 100.0%;"><b>SAN_JORGE_1RO_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_dcce0d3d092cf91ca4ab2f192a53558c.setContent(html_dcbbbb04be2427809f1e7457dd9e5e27);
+            
+        
+
+        marker_3fad9252ba7e6a440787cb6b60006810.bindPopup(popup_dcce0d3d092cf91ca4ab2f192a53558c)
+        ;
+
+        
+    
+    
+                marker_3fad9252ba7e6a440787cb6b60006810.setIcon(icon_428d286dd92f1364517cc5d194e3bfb2);
+            
+    
+            var marker_acaf6872d0ed3c2b98075a37a13206e7 = L.marker(
+                [-15.64571, -67.38689],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_c1a5d53cfb6ae2be5b2fad7c95a6ad7b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_20af031b7c8f4029435528d6686ceac6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_56ce91f763613448602fe2bec2da911d = $(`<div id="html_56ce91f763613448602fe2bec2da911d" style="width: 100.0%; height: 100.0%;"><b>SAN_JUAN_DE_PIQUENDO_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_20af031b7c8f4029435528d6686ceac6.setContent(html_56ce91f763613448602fe2bec2da911d);
+            
+        
+
+        marker_acaf6872d0ed3c2b98075a37a13206e7.bindPopup(popup_20af031b7c8f4029435528d6686ceac6)
+        ;
+
+        
+    
+    
+                marker_acaf6872d0ed3c2b98075a37a13206e7.setIcon(icon_c1a5d53cfb6ae2be5b2fad7c95a6ad7b);
+            
+    
+            var marker_e95590d2ee7306e58be5ade91686ae09 = L.marker(
+                [-15.56301, -67.37601],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_7c04fdc4c6f9014c4178587f5f93a02e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bf7a88170d956a2ec3b4c1c416dad474 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9a5aedc6417fddc6946fd4179e1f6587 = $(`<div id="html_9a5aedc6417fddc6946fd4179e1f6587" style="width: 100.0%; height: 100.0%;"><b>PUENTE_ALTO_BENI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_bf7a88170d956a2ec3b4c1c416dad474.setContent(html_9a5aedc6417fddc6946fd4179e1f6587);
+            
+        
+
+        marker_e95590d2ee7306e58be5ade91686ae09.bindPopup(popup_bf7a88170d956a2ec3b4c1c416dad474)
+        ;
+
+        
+    
+    
+                marker_e95590d2ee7306e58be5ade91686ae09.setIcon(icon_7c04fdc4c6f9014c4178587f5f93a02e);
+            
+    
+            var marker_56e15df8c7aa76a774ac5c6f99124fc4 = L.marker(
+                [-15.73875, -67.48506],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_6703be13e71f642f7a8596c697b74d78 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_566baa819956c34232a93823e85ae26b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6193e26d079de7dd60be2be8b7d86ec9 = $(`<div id="html_6193e26d079de7dd60be2be8b7d86ec9" style="width: 100.0%; height: 100.0%;"><b>NUEVA_ESPERANZA_LPZ_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_566baa819956c34232a93823e85ae26b.setContent(html_6193e26d079de7dd60be2be8b7d86ec9);
+            
+        
+
+        marker_56e15df8c7aa76a774ac5c6f99124fc4.bindPopup(popup_566baa819956c34232a93823e85ae26b)
+        ;
+
+        
+    
+    
+                marker_56e15df8c7aa76a774ac5c6f99124fc4.setIcon(icon_6703be13e71f642f7a8596c697b74d78);
+            
+    
+            var marker_a472bd7b7810ca473b48556a8b3d5e5e = L.marker(
+                [-15.87362, -67.54663],
+                {
+}
+            ).addTo(marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8);
+        
+    
+            var icon_424917f290e9943209b4a13b7bd8ea81 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_287c191b7a1ebd33e160a5aa4e15040f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_84e94094e0578c1cb97e456f46934849 = $(`<div id="html_84e94094e0578c1cb97e456f46934849" style="width: 100.0%; height: 100.0%;"><b>ALTO_AGUA_RICA_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_287c191b7a1ebd33e160a5aa4e15040f.setContent(html_84e94094e0578c1cb97e456f46934849);
+            
+        
+
+        marker_a472bd7b7810ca473b48556a8b3d5e5e.bindPopup(popup_287c191b7a1ebd33e160a5aa4e15040f)
+        ;
+
+        
+    
+    
+                marker_a472bd7b7810ca473b48556a8b3d5e5e.setIcon(icon_424917f290e9943209b4a13b7bd8ea81);
+            
+    
+            marker_cluster_e066d075baeadcb78c4e9edb1e14f5a8.addTo(map_cdc466b328ce762744b3ee24ecfe809c);
+        
+</script>
+</html>
