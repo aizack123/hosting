@@ -1,46 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mapa Interactivo Geoapify</title>
-    <meta charset="utf-8">
-    <script src="https://maps.geoapify.com/v1/geojson/map.js?apiKey=5c8632478de8403ab00d64f2ffedac42"></script>
+    <title>Mapa de Localizaciones - Bolivia</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
-        #map { width: 100%; height: 600px; border: 1px solid #ccc; }
+        body { margin: 0; padding: 0; }
+        #map { height: 100vh; width: 100%; }
+        .info {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+        }
     </style>
 </head>
 <body>
     <div id="map"></div>
+    <div class="info">
+        <h3>Mapa de Localizaciones</h3>
+        <p>Actualizado: 2025-07-23 00:51</p>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-kml@1.0.2/dist/leaflet-kml.js"></script>
     
     <script>
-        // Coordenadas [lon, lat]
-        const points = [
-            [4.9036, 52.3680],  // Estación Central
-            [4.8942, 52.3667],   // Dam Square
-            [4.9014, 52.3756],   // Anne Frank House
-            [4.8810, 52.3584],   // Museo Van Gogh
-            [4.9295, 52.3718]    // Zoo Artis
-        ];
+        // Mapa centrado en Bolivia
+        var map = L.map('map').setView([-16.2902, -63.5887], 6);
         
-        // Crear mapa interactivo
-        const map = new GeoapifyMap('map', {
-            center: [points[0][0], points[0][1]],
-            zoom: 13,
-            style: "klokantech-basic"
-        });
+        // Capa base de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
         
-        // Añadir marcadores
-        points.forEach((point, index) => {
-            map.addMarker({
-                lat: point[1],
-                lng: point[0],
-                color: "#FF0000",
-                icon: "material",
-                title: `Punto ${index + 1}`
+        // Cargar KML desde el otro repositorio
+        var kmlUrl = 'https://raw.githubusercontent.com/aizack123/mapas/main/geo.kml';
+        
+        // Mostrar mensaje de carga
+        var loadingMsg = L.control({position: 'bottomleft'});
+        loadingMsg.onAdd = function(map) {
+            this._div = L.DomUtil.create('div', 'loading-msg');
+            this._div.innerHTML = '<b>Cargando datos...</b>';
+            return this._div;
+        };
+        loadingMsg.addTo(map);
+        
+        fetch(kmlUrl)
+            .then(res => {
+                if (!res.ok) throw new Error('Error al cargar KML');
+                return res.text();
+            })
+            .then(kmltext => {
+                // Parsear el KML
+                var parser = new DOMParser();
+                var kml = parser.parseFromString(kmltext, 'text/xml');
+                
+                // Mostrar en el mapa
+                var track = new L.KML(kml);
+                map.addLayer(track);
+                
+                // Ajustar la vista para mostrar todos los marcadores
+                if (track.getLayers().length > 0) {
+                    map.fitBounds(track.getBounds());
+                }
+                
+                // Ocultar mensaje de carga
+                map.removeControl(loadingMsg);
+            })
+            .catch(err => {
+                console.error('Error cargando KML:', err);
+                loadingMsg._div.innerHTML = '<b style="color:red">Error al cargar datos</b>';
             });
-        });
-        
-        // Ajustar vista para mostrar todos los puntos
-        map.fitToMarkers();
     </script>
 </body>
 </html>
