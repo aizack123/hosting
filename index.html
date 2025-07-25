@@ -30,7 +30,7 @@
             #map {
                 flex-grow: 1;
             }
-            /* Ajustar el iframe del mapa para llenar el espacio */
+
             iframe {
                 width: 100% !important;
                 height: 100% !important;
@@ -39,7 +39,7 @@
     </head>
     <body>
         <header>Ubicaciones</header>
-        <h1>Mapa Interactivo de Localizaciones</h1>
+        <h1>Mapa de Localizaciones</h1>
         <div id="map">
             <!DOCTYPE html>
 <html>
@@ -60,7 +60,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_579fdc723c5ed50702f3e92734609ee2 {
+                #map_faffdf29cf838e7591dac3eb15cd97df {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -100,14 +100,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_579fdc723c5ed50702f3e92734609ee2" ></div>
+            <div class="folium-map" id="map_faffdf29cf838e7591dac3eb15cd97df" ></div>
         
 </body>
 <script>
     
     
-            var map_579fdc723c5ed50702f3e92734609ee2 = L.map(
-                "map_579fdc723c5ed50702f3e92734609ee2",
+            var map_faffdf29cf838e7591dac3eb15cd97df = L.map(
+                "map_faffdf29cf838e7591dac3eb15cd97df",
                 {
                     center: [-16.2902, -63.5887],
                     crs: L.CRS.EPSG3857,
@@ -124,7 +124,7 @@
 
         
     
-            var tile_layer_9bd75faef64a0db41dc9b46ac5f02955 = L.tileLayer(
+            var tile_layer_6de30b257ab03ed9d4829a78c4e80a8c = L.tileLayer(
                 "https://mt1.google.com/vt/lyrs=r\u0026x={x}\u0026y={y}\u0026z={z}",
                 {
   "minZoom": 0,
@@ -141,23 +141,23 @@
             );
         
     
-            tile_layer_9bd75faef64a0db41dc9b46ac5f02955.addTo(map_579fdc723c5ed50702f3e92734609ee2);
+            tile_layer_6de30b257ab03ed9d4829a78c4e80a8c.addTo(map_faffdf29cf838e7591dac3eb15cd97df);
         
     
-            var marker_cluster_4ecd919000c8227daa2ab126ad4647dc = L.markerClusterGroup(
+            var marker_cluster_cf67eac9233f045c508ad29e50f22801 = L.markerClusterGroup(
                 {
 }
             );
         
     
-            var marker_8eba2b443fbfbc4611d163be483aa6fb = L.marker(
-                [-15.51194, -67.45112],
+            var marker_18c57ce681262c6761109a200144ccf5 = L.marker(
+                [-19.56208, -65.76184],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_ddcdcf5b84c422bcda680ce932b3f873 = L.AwesomeMarkers.icon(
+            var icon_3e8ac97016781b80e70c2dde7f6e42b6 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -168,34 +168,34 @@
             );
         
     
-        var popup_0371a3cee1e0d49d30f61bd0fc071213 = L.popup({
+        var popup_9651be2484cd869765604b933ac7e7d3 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_5e6ae5bf807ead9f00429170eddb055b = $(`<div id="html_5e6ae5bf807ead9f00429170eddb055b" style="width: 100.0%; height: 100.0%;"><b>SUAPI_KM73_TSI</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_0371a3cee1e0d49d30f61bd0fc071213.setContent(html_5e6ae5bf807ead9f00429170eddb055b);
+                var html_4ee579c94c4c8d9afc36b6f23f236248 = $(`<div id="html_4ee579c94c4c8d9afc36b6f23f236248" style="width: 100.0%; height: 100.0%;"><b>AV_LAS_BANDERAS_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_9651be2484cd869765604b933ac7e7d3.setContent(html_4ee579c94c4c8d9afc36b6f23f236248);
             
         
 
-        marker_8eba2b443fbfbc4611d163be483aa6fb.bindPopup(popup_0371a3cee1e0d49d30f61bd0fc071213)
+        marker_18c57ce681262c6761109a200144ccf5.bindPopup(popup_9651be2484cd869765604b933ac7e7d3)
         ;
 
         
     
     
-                marker_8eba2b443fbfbc4611d163be483aa6fb.setIcon(icon_ddcdcf5b84c422bcda680ce932b3f873);
+                marker_18c57ce681262c6761109a200144ccf5.setIcon(icon_3e8ac97016781b80e70c2dde7f6e42b6);
             
     
-            var marker_86f710279b992892f5808560264179f8 = L.marker(
-                [-15.53391, -67.46283],
+            var marker_7bef6428e4ce5752d56cc755b1553e25 = L.marker(
+                [-17.09166, -65.7626],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_9ab401601e2908dbb386141b831c4d8b = L.AwesomeMarkers.icon(
+            var icon_dc6416a1be007f91209ce17638239977 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -206,34 +206,34 @@
             );
         
     
-        var popup_d3e5acebdcdecd9187251de66597fa70 = L.popup({
+        var popup_3f87dd33a3afc566c6e2175d5f8ed071 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_ca3acbbc01f41b6b0bc03056e0823ca5 = $(`<div id="html_ca3acbbc01f41b6b0bc03056e0823ca5" style="width: 100.0%; height: 100.0%;"><b>ORO_VERDE_TSI</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_d3e5acebdcdecd9187251de66597fa70.setContent(html_ca3acbbc01f41b6b0bc03056e0823ca5);
+                var html_df241bad2c47bc58d28c4d63c036aa49 = $(`<div id="html_df241bad2c47bc58d28c4d63c036aa49" style="width: 100.0%; height: 100.0%;"><b>LOS_PINOS_POTOSI_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_3f87dd33a3afc566c6e2175d5f8ed071.setContent(html_df241bad2c47bc58d28c4d63c036aa49);
             
         
 
-        marker_86f710279b992892f5808560264179f8.bindPopup(popup_d3e5acebdcdecd9187251de66597fa70)
+        marker_7bef6428e4ce5752d56cc755b1553e25.bindPopup(popup_3f87dd33a3afc566c6e2175d5f8ed071)
         ;
 
         
     
     
-                marker_86f710279b992892f5808560264179f8.setIcon(icon_9ab401601e2908dbb386141b831c4d8b);
+                marker_7bef6428e4ce5752d56cc755b1553e25.setIcon(icon_dc6416a1be007f91209ce17638239977);
             
     
-            var marker_4886602347513878671469b245d3deed = L.marker(
-                [-15.79165, -67.50969],
+            var marker_99c7043caa18eb2d74866df04e480141 = L.marker(
+                [-17.75187, -65.76041],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_1a3a53c90bf2bfd49ef3562b03e32255 = L.AwesomeMarkers.icon(
+            var icon_036e2898162caefa832f21a12e1dbcf9 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -244,34 +244,34 @@
             );
         
     
-        var popup_ccec5c1d00fb806389f0b01c9b268b6f = L.popup({
+        var popup_ecf47da3171815aa8807dfdacf56290e = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_714bcec95f0b38fc1b9b5a050a2b8d36 = $(`<div id="html_714bcec95f0b38fc1b9b5a050a2b8d36" style="width: 100.0%; height: 100.0%;"><b>SAN_LORENZO_CARANAVI_TSI</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_ccec5c1d00fb806389f0b01c9b268b6f.setContent(html_714bcec95f0b38fc1b9b5a050a2b8d36);
+                var html_ab08762905cfe04f73cd991a5deeb9a5 = $(`<div id="html_ab08762905cfe04f73cd991a5deeb9a5" style="width: 100.0%; height: 100.0%;"><b>AMERICA_POTOSI_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_ecf47da3171815aa8807dfdacf56290e.setContent(html_ab08762905cfe04f73cd991a5deeb9a5);
             
         
 
-        marker_4886602347513878671469b245d3deed.bindPopup(popup_ccec5c1d00fb806389f0b01c9b268b6f)
+        marker_99c7043caa18eb2d74866df04e480141.bindPopup(popup_ecf47da3171815aa8807dfdacf56290e)
         ;
 
         
     
     
-                marker_4886602347513878671469b245d3deed.setIcon(icon_1a3a53c90bf2bfd49ef3562b03e32255);
+                marker_99c7043caa18eb2d74866df04e480141.setIcon(icon_036e2898162caefa832f21a12e1dbcf9);
             
     
-            var marker_87451e23a03c5166fbf8938e2420f46b = L.marker(
-                [-15.59653, -67.3995],
+            var marker_bf57d6ac7c1ffd41a3344fcadfb72e85 = L.marker(
+                [-19.04302, -65.74647],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_f7165bcd5239eafdb4b6131120404e6a = L.AwesomeMarkers.icon(
+            var icon_a372e5e975938d0db361031602a28424 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -282,34 +282,34 @@
             );
         
     
-        var popup_f09075b72eb1d5d6f76c2fe9c0151215 = L.popup({
+        var popup_3f2f9f30a6d6bcaeb1ec3b20893d7f58 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_77e87f42b5fe212d30da8938747831eb = $(`<div id="html_77e87f42b5fe212d30da8938747831eb" style="width: 100.0%; height: 100.0%;"><b>CASERIOS_NUEVE_TSI</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_f09075b72eb1d5d6f76c2fe9c0151215.setContent(html_77e87f42b5fe212d30da8938747831eb);
+                var html_6708022427ad1b383a1865e1a3545c73 = $(`<div id="html_6708022427ad1b383a1865e1a3545c73" style="width: 100.0%; height: 100.0%;"><b>ZONA_ALTIPAMPA_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_3f2f9f30a6d6bcaeb1ec3b20893d7f58.setContent(html_6708022427ad1b383a1865e1a3545c73);
             
         
 
-        marker_87451e23a03c5166fbf8938e2420f46b.bindPopup(popup_f09075b72eb1d5d6f76c2fe9c0151215)
+        marker_bf57d6ac7c1ffd41a3344fcadfb72e85.bindPopup(popup_3f2f9f30a6d6bcaeb1ec3b20893d7f58)
         ;
 
         
     
     
-                marker_87451e23a03c5166fbf8938e2420f46b.setIcon(icon_f7165bcd5239eafdb4b6131120404e6a);
+                marker_bf57d6ac7c1ffd41a3344fcadfb72e85.setIcon(icon_a372e5e975938d0db361031602a28424);
             
     
-            var marker_07c03460578d0581810a9642a195b56a = L.marker(
-                [-15.54763, -67.45009],
+            var marker_f08ae6d946a3f6a7bbe413b371854005 = L.marker(
+                [-17.75187, -65.75645],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_e99cd5041e7522530b76eca488fa0040 = L.AwesomeMarkers.icon(
+            var icon_008b1bb301a3db8de2f018678f77fe53 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -320,34 +320,34 @@
             );
         
     
-        var popup_df11b1c8ba580c2a238125ab5a59649a = L.popup({
+        var popup_bf4d994cb36ebd853d3c0ed1a1e4fb91 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_bca759c5562f2a3c01616ee02398b56c = $(`<div id="html_bca759c5562f2a3c01616ee02398b56c" style="width: 100.0%; height: 100.0%;"><b>SANTA_ROSA_ALTO_BENI_TSI</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_df11b1c8ba580c2a238125ab5a59649a.setContent(html_bca759c5562f2a3c01616ee02398b56c);
+                var html_5967e7f99a611cfda69bf3c248df59e8 = $(`<div id="html_5967e7f99a611cfda69bf3c248df59e8" style="width: 100.0%; height: 100.0%;"><b>ARCE_POTOSI_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_bf4d994cb36ebd853d3c0ed1a1e4fb91.setContent(html_5967e7f99a611cfda69bf3c248df59e8);
             
         
 
-        marker_07c03460578d0581810a9642a195b56a.bindPopup(popup_df11b1c8ba580c2a238125ab5a59649a)
+        marker_f08ae6d946a3f6a7bbe413b371854005.bindPopup(popup_bf4d994cb36ebd853d3c0ed1a1e4fb91)
         ;
 
         
     
     
-                marker_07c03460578d0581810a9642a195b56a.setIcon(icon_e99cd5041e7522530b76eca488fa0040);
+                marker_f08ae6d946a3f6a7bbe413b371854005.setIcon(icon_008b1bb301a3db8de2f018678f77fe53);
             
     
-            var marker_03096edb74a4850895da41151051fdec = L.marker(
-                [-15.66208, -67.56223],
+            var marker_eb03c23d389bbf2b99705012a36f6a80 = L.marker(
+                [-17.62891, -65.75414],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_67d5c0071923ca843de1412f8c1ca500 = L.AwesomeMarkers.icon(
+            var icon_1e52d5d82534f976e3597f540e73d571 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -358,34 +358,34 @@
             );
         
     
-        var popup_39374950dbf272ec51f196f1a3809c37 = L.popup({
+        var popup_762e77ba2222df04418612ed2c764009 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_2882e8528ccca514611735ee62d6912f = $(`<div id="html_2882e8528ccca514611735ee62d6912f" style="width: 100.0%; height: 100.0%;"><b>KOLLASUYO_B_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_39374950dbf272ec51f196f1a3809c37.setContent(html_2882e8528ccca514611735ee62d6912f);
+                var html_13b7693b0846c31045810e74ae19aa5b = $(`<div id="html_13b7693b0846c31045810e74ae19aa5b" style="width: 100.0%; height: 100.0%;"><b>LAS_ROSAS_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_762e77ba2222df04418612ed2c764009.setContent(html_13b7693b0846c31045810e74ae19aa5b);
             
         
 
-        marker_03096edb74a4850895da41151051fdec.bindPopup(popup_39374950dbf272ec51f196f1a3809c37)
+        marker_eb03c23d389bbf2b99705012a36f6a80.bindPopup(popup_762e77ba2222df04418612ed2c764009)
         ;
 
         
     
     
-                marker_03096edb74a4850895da41151051fdec.setIcon(icon_67d5c0071923ca843de1412f8c1ca500);
+                marker_eb03c23d389bbf2b99705012a36f6a80.setIcon(icon_1e52d5d82534f976e3597f540e73d571);
             
     
-            var marker_0465161b8ed645134cc617ea07eb41a8 = L.marker(
-                [-15.59653, -67.3995],
+            var marker_cc823df1448f029e11efaad3532093dd = L.marker(
+                [-19.03024, -65.76206],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_2b4df051b96b1a6ab35daf287ff173c4 = L.AwesomeMarkers.icon(
+            var icon_f2567bb8b6c1f57dc44361c314e6a09e = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -396,34 +396,34 @@
             );
         
     
-        var popup_ff228d3225985110cab12c2bff67fc17 = L.popup({
+        var popup_ba8b9b29ce722ed66195d146ea95aba0 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_4c11f23fb39ef117c1dbfc9f6fd32eb5 = $(`<div id="html_4c11f23fb39ef117c1dbfc9f6fd32eb5" style="width: 100.0%; height: 100.0%;"><b>CASERIOS_NUEVE_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_ff228d3225985110cab12c2bff67fc17.setContent(html_4c11f23fb39ef117c1dbfc9f6fd32eb5);
+                var html_44be0627315213f10f4a36ae7d3dba66 = $(`<div id="html_44be0627315213f10f4a36ae7d3dba66" style="width: 100.0%; height: 100.0%;"><b>STADIUM_POTOSI_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_ba8b9b29ce722ed66195d146ea95aba0.setContent(html_44be0627315213f10f4a36ae7d3dba66);
             
         
 
-        marker_0465161b8ed645134cc617ea07eb41a8.bindPopup(popup_ff228d3225985110cab12c2bff67fc17)
+        marker_cc823df1448f029e11efaad3532093dd.bindPopup(popup_ba8b9b29ce722ed66195d146ea95aba0)
         ;
 
         
     
     
-                marker_0465161b8ed645134cc617ea07eb41a8.setIcon(icon_2b4df051b96b1a6ab35daf287ff173c4);
+                marker_cc823df1448f029e11efaad3532093dd.setIcon(icon_f2567bb8b6c1f57dc44361c314e6a09e);
             
     
-            var marker_3d3c55677994b433dbea474a188b07f6 = L.marker(
-                [-15.54763, -67.45009],
+            var marker_36e4a5b3dafb90da4ee26ebb26d4fd0a = L.marker(
+                [-21.47782, -65.77144],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_ec4018611549d343b09f32ccc26dfe9d = L.AwesomeMarkers.icon(
+            var icon_208a8dfd0c4444f156175362b93f1ced = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -434,34 +434,34 @@
             );
         
     
-        var popup_8753004758e222c96728752c1d11107c = L.popup({
+        var popup_f0aab04942d7438b3a1082b330c270c5 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_78d292d13a2fc7f18bed8111d7791ae4 = $(`<div id="html_78d292d13a2fc7f18bed8111d7791ae4" style="width: 100.0%; height: 100.0%;"><b>SANTA_ROSA_ALTO_BENI_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_8753004758e222c96728752c1d11107c.setContent(html_78d292d13a2fc7f18bed8111d7791ae4);
+                var html_5b8c27018ffceb8fd5222f87087ce51a = $(`<div id="html_5b8c27018ffceb8fd5222f87087ce51a" style="width: 100.0%; height: 100.0%;"><b>PLAN40_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_f0aab04942d7438b3a1082b330c270c5.setContent(html_5b8c27018ffceb8fd5222f87087ce51a);
             
         
 
-        marker_3d3c55677994b433dbea474a188b07f6.bindPopup(popup_8753004758e222c96728752c1d11107c)
+        marker_36e4a5b3dafb90da4ee26ebb26d4fd0a.bindPopup(popup_f0aab04942d7438b3a1082b330c270c5)
         ;
 
         
     
     
-                marker_3d3c55677994b433dbea474a188b07f6.setIcon(icon_ec4018611549d343b09f32ccc26dfe9d);
+                marker_36e4a5b3dafb90da4ee26ebb26d4fd0a.setIcon(icon_208a8dfd0c4444f156175362b93f1ced);
             
     
-            var marker_ac730974db5445a7a7b29dca06edb235 = L.marker(
-                [-15.53391, -67.46283],
+            var marker_3fb9116a65581e99a075ab20bf4cac3c = L.marker(
+                [-17.44897, -65.74966],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_11cb8ed5b2e0a41948590c362589753f = L.AwesomeMarkers.icon(
+            var icon_1e8c265957e30e5d9c68614bc58c7b48 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -472,34 +472,34 @@
             );
         
     
-        var popup_43d3e9d7531a6442278b8210998a2bbb = L.popup({
+        var popup_ffa7a6347e1d83e19064cbd2d63158cb = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_6082512e74cf5b46a7a9bfdf942dc876 = $(`<div id="html_6082512e74cf5b46a7a9bfdf942dc876" style="width: 100.0%; height: 100.0%;"><b>ORO_VERDE_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_43d3e9d7531a6442278b8210998a2bbb.setContent(html_6082512e74cf5b46a7a9bfdf942dc876);
+                var html_7e74795ff6b77ac6baea63c1a30476ad = $(`<div id="html_7e74795ff6b77ac6baea63c1a30476ad" style="width: 100.0%; height: 100.0%;"><b>CERVECERIA_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_ffa7a6347e1d83e19064cbd2d63158cb.setContent(html_7e74795ff6b77ac6baea63c1a30476ad);
             
         
 
-        marker_ac730974db5445a7a7b29dca06edb235.bindPopup(popup_43d3e9d7531a6442278b8210998a2bbb)
+        marker_3fb9116a65581e99a075ab20bf4cac3c.bindPopup(popup_ffa7a6347e1d83e19064cbd2d63158cb)
         ;
 
         
     
     
-                marker_ac730974db5445a7a7b29dca06edb235.setIcon(icon_11cb8ed5b2e0a41948590c362589753f);
+                marker_3fb9116a65581e99a075ab20bf4cac3c.setIcon(icon_1e8c265957e30e5d9c68614bc58c7b48);
             
     
-            var marker_5129e9944a9e67739843f241d6132bd9 = L.marker(
-                [-15.79165, -67.50969],
+            var marker_c13719d48543c9616767c765e1afc67a = L.marker(
+                [-17.64104, -65.76108],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_b613d5d36e83c1c423e848d81db260f1 = L.AwesomeMarkers.icon(
+            var icon_f1444675ee21395c5d62ea3a82615eaf = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -510,34 +510,34 @@
             );
         
     
-        var popup_5d44a5798b4e1b0454a98a8d49485d23 = L.popup({
+        var popup_5017dfef2374613cdfd7d74a237ec768 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_b1abeb197df0dd9a1fc079e69a465117 = $(`<div id="html_b1abeb197df0dd9a1fc079e69a465117" style="width: 100.0%; height: 100.0%;"><b>SAN_LORENZO_CARANAVI_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_5d44a5798b4e1b0454a98a8d49485d23.setContent(html_b1abeb197df0dd9a1fc079e69a465117);
+                var html_efd3cbb2bc5d55016e2d6ced9c63bddf = $(`<div id="html_efd3cbb2bc5d55016e2d6ced9c63bddf" style="width: 100.0%; height: 100.0%;"><b>FACULTAD_DE_ECONOMIA_ML</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_5017dfef2374613cdfd7d74a237ec768.setContent(html_efd3cbb2bc5d55016e2d6ced9c63bddf);
             
         
 
-        marker_5129e9944a9e67739843f241d6132bd9.bindPopup(popup_5d44a5798b4e1b0454a98a8d49485d23)
+        marker_c13719d48543c9616767c765e1afc67a.bindPopup(popup_5017dfef2374613cdfd7d74a237ec768)
         ;
 
         
     
     
-                marker_5129e9944a9e67739843f241d6132bd9.setIcon(icon_b613d5d36e83c1c423e848d81db260f1);
+                marker_c13719d48543c9616767c765e1afc67a.setIcon(icon_f1444675ee21395c5d62ea3a82615eaf);
             
     
-            var marker_6716361ea503153a6c5df5900aa35b9e = L.marker(
-                [-15.51194, -67.45112],
+            var marker_a0f9289cc9ad3aa08e744050c3adfdc8 = L.marker(
+                [-17.73031, -65.75391],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_0a8295a440e55f45a9a0f41be9d4f337 = L.AwesomeMarkers.icon(
+            var icon_2e92fab36996492e635ec56575744868 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -548,34 +548,34 @@
             );
         
     
-        var popup_1b7ce782f0dcb3576bf249361c734fbb = L.popup({
+        var popup_07c2b95b9d44e9513693bc8f73df3eb5 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_9cdbc95dbce5a9f8ee8fc3a05381222e = $(`<div id="html_9cdbc95dbce5a9f8ee8fc3a05381222e" style="width: 100.0%; height: 100.0%;"><b>SUAPI_KM73_TSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_1b7ce782f0dcb3576bf249361c734fbb.setContent(html_9cdbc95dbce5a9f8ee8fc3a05381222e);
+                var html_0c7cf5bd84a6221f4be1be830d0a236a = $(`<div id="html_0c7cf5bd84a6221f4be1be830d0a236a" style="width: 100.0%; height: 100.0%;"><b>NORMAL_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_07c2b95b9d44e9513693bc8f73df3eb5.setContent(html_0c7cf5bd84a6221f4be1be830d0a236a);
             
         
 
-        marker_6716361ea503153a6c5df5900aa35b9e.bindPopup(popup_1b7ce782f0dcb3576bf249361c734fbb)
+        marker_a0f9289cc9ad3aa08e744050c3adfdc8.bindPopup(popup_07c2b95b9d44e9513693bc8f73df3eb5)
         ;
 
         
     
     
-                marker_6716361ea503153a6c5df5900aa35b9e.setIcon(icon_0a8295a440e55f45a9a0f41be9d4f337);
+                marker_a0f9289cc9ad3aa08e744050c3adfdc8.setIcon(icon_2e92fab36996492e635ec56575744868);
             
     
-            var marker_48eba0eff2775cf402f1dac69d001094 = L.marker(
-                [-15.41678, -67.60716],
+            var marker_80925d5a408dc1513720b230fdf16685 = L.marker(
+                [-17.09166, -65.76683],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_51370938cda146f7e5189c8abe7c50b5 = L.AwesomeMarkers.icon(
+            var icon_476ead8591f48a3bb2532466dec294c4 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -586,34 +586,34 @@
             );
         
     
-        var popup_ac8deff66a4271cb09bcf93b2c3c206e = L.popup({
+        var popup_94cf781d648f0ec21fa1d4812ac939d3 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_f1f78ec46e684358c2c99721c62577bf = $(`<div id="html_f1f78ec46e684358c2c99721c62577bf" style="width: 100.0%; height: 100.0%;"><b>MAYAYA_PUEBLO_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_ac8deff66a4271cb09bcf93b2c3c206e.setContent(html_f1f78ec46e684358c2c99721c62577bf);
+                var html_2f7b511104c10f55c97da74ae7035757 = $(`<div id="html_2f7b511104c10f55c97da74ae7035757" style="width: 100.0%; height: 100.0%;"><b>LOS_PINOS_DALIAS_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_94cf781d648f0ec21fa1d4812ac939d3.setContent(html_2f7b511104c10f55c97da74ae7035757);
             
         
 
-        marker_48eba0eff2775cf402f1dac69d001094.bindPopup(popup_ac8deff66a4271cb09bcf93b2c3c206e)
+        marker_80925d5a408dc1513720b230fdf16685.bindPopup(popup_94cf781d648f0ec21fa1d4812ac939d3)
         ;
 
         
     
     
-                marker_48eba0eff2775cf402f1dac69d001094.setIcon(icon_51370938cda146f7e5189c8abe7c50b5);
+                marker_80925d5a408dc1513720b230fdf16685.setIcon(icon_476ead8591f48a3bb2532466dec294c4);
             
     
-            var marker_f5e42a0afd9f1d79f2a2a6320c01f0a0 = L.marker(
-                [-15.50762, -67.47317],
+            var marker_f5930ab7fed30d6869a48d107163de2b = L.marker(
+                [-17.37751, -65.75916],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_0d0e8ce457c60ee480f288f27faab736 = L.AwesomeMarkers.icon(
+            var icon_54c006088b05f805a508bd7dbb1b17a0 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -624,34 +624,34 @@
             );
         
     
-        var popup_e86398ceee6b539f316130c38c9a2ca2 = L.popup({
+        var popup_062cacbf0dc048a969ebaba526f8bcfd = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_19af8d3faed0895c1db71f492299c56d = $(`<div id="html_19af8d3faed0895c1db71f492299c56d" style="width: 100.0%; height: 100.0%;"><b>PALMAR_SUAPI_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_e86398ceee6b539f316130c38c9a2ca2.setContent(html_19af8d3faed0895c1db71f492299c56d);
+                var html_e94b37e4ad5de9ec5388bb58ebafb026 = $(`<div id="html_e94b37e4ad5de9ec5388bb58ebafb026" style="width: 100.0%; height: 100.0%;"><b>ESTACION_ML</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_062cacbf0dc048a969ebaba526f8bcfd.setContent(html_e94b37e4ad5de9ec5388bb58ebafb026);
             
         
 
-        marker_f5e42a0afd9f1d79f2a2a6320c01f0a0.bindPopup(popup_e86398ceee6b539f316130c38c9a2ca2)
+        marker_f5930ab7fed30d6869a48d107163de2b.bindPopup(popup_062cacbf0dc048a969ebaba526f8bcfd)
         ;
 
         
     
     
-                marker_f5e42a0afd9f1d79f2a2a6320c01f0a0.setIcon(icon_0d0e8ce457c60ee480f288f27faab736);
+                marker_f5930ab7fed30d6869a48d107163de2b.setIcon(icon_54c006088b05f805a508bd7dbb1b17a0);
             
     
-            var marker_2e6d31eea802eefbbef792203ac21405 = L.marker(
-                [-15.35143, -67.55106],
+            var marker_52cfc30731403ce0d820ba83fd761286 = L.marker(
+                [-17.44897, -65.75986],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_2112d941ebfa71ed02f9f24f48111908 = L.AwesomeMarkers.icon(
+            var icon_0cee2b32a005680c1e1f8b8e833d7345 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -662,34 +662,34 @@
             );
         
     
-        var popup_f52251dd3bec63fe6c238fd03e7bb0f5 = L.popup({
+        var popup_9d2ee5f5ee355f085c20353796bb2204 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_84b49ad498c5207e7efa6d9ed3e76a5b = $(`<div id="html_84b49ad498c5207e7efa6d9ed3e76a5b" style="width: 100.0%; height: 100.0%;"><b>AGRARIA_22_DE_JULIO_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_f52251dd3bec63fe6c238fd03e7bb0f5.setContent(html_84b49ad498c5207e7efa6d9ed3e76a5b);
+                var html_48a81f30bb449be1d1a4ee19e7ec26d8 = $(`<div id="html_48a81f30bb449be1d1a4ee19e7ec26d8" style="width: 100.0%; height: 100.0%;"><b>DELICIAS_PTS_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_9d2ee5f5ee355f085c20353796bb2204.setContent(html_48a81f30bb449be1d1a4ee19e7ec26d8);
             
         
 
-        marker_2e6d31eea802eefbbef792203ac21405.bindPopup(popup_f52251dd3bec63fe6c238fd03e7bb0f5)
+        marker_52cfc30731403ce0d820ba83fd761286.bindPopup(popup_9d2ee5f5ee355f085c20353796bb2204)
         ;
 
         
     
     
-                marker_2e6d31eea802eefbbef792203ac21405.setIcon(icon_2112d941ebfa71ed02f9f24f48111908);
+                marker_52cfc30731403ce0d820ba83fd761286.setIcon(icon_0cee2b32a005680c1e1f8b8e833d7345);
             
     
-            var marker_176f405b36ed950f87ababce4f7fdd36 = L.marker(
-                [-15.51073, -67.42295],
+            var marker_546ec52df7e729af00a1757c266b7886 = L.marker(
+                [-17.75187, -65.76356],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_a5dba6219f0bc393e549442e98a8b68e = L.AwesomeMarkers.icon(
+            var icon_a83b44127f582a52c8d1cfe1cda648b6 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -700,34 +700,34 @@
             );
         
     
-        var popup_91ad81eda16546c4b9fc49d33d6f622c = L.popup({
+        var popup_05c70bfde42b655e51ab9ce72559303d = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_bbb5752cc083cc8b470fe9fac6e199f5 = $(`<div id="html_bbb5752cc083cc8b470fe9fac6e199f5" style="width: 100.0%; height: 100.0%;"><b>SANTA_ANA_DE_MOSETENES_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_91ad81eda16546c4b9fc49d33d6f622c.setContent(html_bbb5752cc083cc8b470fe9fac6e199f5);
+                var html_4eec61692ff1d5dc5706ce53dae14e2c = $(`<div id="html_4eec61692ff1d5dc5706ce53dae14e2c" style="width: 100.0%; height: 100.0%;"><b>AVENIDA_AMERICA_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_05c70bfde42b655e51ab9ce72559303d.setContent(html_4eec61692ff1d5dc5706ce53dae14e2c);
             
         
 
-        marker_176f405b36ed950f87ababce4f7fdd36.bindPopup(popup_91ad81eda16546c4b9fc49d33d6f622c)
+        marker_546ec52df7e729af00a1757c266b7886.bindPopup(popup_05c70bfde42b655e51ab9ce72559303d)
         ;
 
         
     
     
-                marker_176f405b36ed950f87ababce4f7fdd36.setIcon(icon_a5dba6219f0bc393e549442e98a8b68e);
+                marker_546ec52df7e729af00a1757c266b7886.setIcon(icon_a83b44127f582a52c8d1cfe1cda648b6);
             
     
-            var marker_471cb29eee6c0650db4e6b421ebc560e = L.marker(
-                [-15.24191, -67.67519],
+            var marker_4167487c0e336c8268e3bfa72890f07e = L.marker(
+                [-19.56677, -65.74505],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_bab78ad10acf01483aa7382653a22324 = L.AwesomeMarkers.icon(
+            var icon_343eb1efe73ec3ee600af07f220c4bea = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -738,34 +738,34 @@
             );
         
     
-        var popup_67e671ebfee5dd12461cfd7a09b82a9a = L.popup({
+        var popup_914ae13770386be758b26dc6df2288cc = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_53377b45094be8577914fc8843b5ef73 = $(`<div id="html_53377b45094be8577914fc8843b5ef73" style="width: 100.0%; height: 100.0%;"><b>SAN_PEDRO_DE_LLUQUIMUNI_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_67e671ebfee5dd12461cfd7a09b82a9a.setContent(html_53377b45094be8577914fc8843b5ef73);
+                var html_78f557fcc2db6aeb3fd13a7f5a45b746 = $(`<div id="html_78f557fcc2db6aeb3fd13a7f5a45b746" style="width: 100.0%; height: 100.0%;"><b>VILLA_MECANICOS_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_914ae13770386be758b26dc6df2288cc.setContent(html_78f557fcc2db6aeb3fd13a7f5a45b746);
             
         
 
-        marker_471cb29eee6c0650db4e6b421ebc560e.bindPopup(popup_67e671ebfee5dd12461cfd7a09b82a9a)
+        marker_4167487c0e336c8268e3bfa72890f07e.bindPopup(popup_914ae13770386be758b26dc6df2288cc)
         ;
 
         
     
     
-                marker_471cb29eee6c0650db4e6b421ebc560e.setIcon(icon_bab78ad10acf01483aa7382653a22324);
+                marker_4167487c0e336c8268e3bfa72890f07e.setIcon(icon_343eb1efe73ec3ee600af07f220c4bea);
             
     
-            var marker_971a510853776aed39c598141e132e12 = L.marker(
-                [-15.45081, -67.63455],
+            var marker_3b8cbbdbadf62c6212a8e797203aa447 = L.marker(
+                [-15.94394, -65.76543],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_f56e3e58cf8123a68d6ae09dfb3691cf = L.AwesomeMarkers.icon(
+            var icon_8a3273cc03fb74d12c0844918512409e = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -776,34 +776,34 @@
             );
         
     
-        var popup_7853192c09f58a05064b88aefb28eada = L.popup({
+        var popup_5a2ef6844cfa5bc2e0998a9fa337da86 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_05323e9ddea92fa752007b7f4e727d24 = $(`<div id="html_05323e9ddea92fa752007b7f4e727d24" style="width: 100.0%; height: 100.0%;"><b>TRONCAL_INCAHUARA_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_7853192c09f58a05064b88aefb28eada.setContent(html_05323e9ddea92fa752007b7f4e727d24);
+                var html_b18a60b165605637931f49193956233a = $(`<div id="html_b18a60b165605637931f49193956233a" style="width: 100.0%; height: 100.0%;"><b>VILLA_ARGENTINA_LTE</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_5a2ef6844cfa5bc2e0998a9fa337da86.setContent(html_b18a60b165605637931f49193956233a);
             
         
 
-        marker_971a510853776aed39c598141e132e12.bindPopup(popup_7853192c09f58a05064b88aefb28eada)
+        marker_3b8cbbdbadf62c6212a8e797203aa447.bindPopup(popup_5a2ef6844cfa5bc2e0998a9fa337da86)
         ;
 
         
     
     
-                marker_971a510853776aed39c598141e132e12.setIcon(icon_f56e3e58cf8123a68d6ae09dfb3691cf);
+                marker_3b8cbbdbadf62c6212a8e797203aa447.setIcon(icon_8a3273cc03fb74d12c0844918512409e);
             
     
-            var marker_a25a49be3b561ed3497b1269490db179 = L.marker(
-                [-15.52325, -67.36039],
+            var marker_94c7a691e53d245683013e58bf2920a5 = L.marker(
+                [-19.56026, -65.77144],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_8d4bd4c08a5d6f7c8a4adb415656e196 = L.AwesomeMarkers.icon(
+            var icon_a7120873ccde9bc4ce01ceb14105ead6 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -814,34 +814,34 @@
             );
         
     
-        var popup_6db9733b9356d8f85ae8b99123ec1384 = L.popup({
+        var popup_7a71b24fd605135465c787f25fc2b773 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_778fb299753aab3f693ec780e6af40db = $(`<div id="html_778fb299753aab3f693ec780e6af40db" style="width: 100.0%; height: 100.0%;"><b>VILLAZON_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_6db9733b9356d8f85ae8b99123ec1384.setContent(html_778fb299753aab3f693ec780e6af40db);
+                var html_bd9f7472df4ba2ff07a862b3f0b17c39 = $(`<div id="html_bd9f7472df4ba2ff07a862b3f0b17c39" style="width: 100.0%; height: 100.0%;"><b>PLAN40</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_7a71b24fd605135465c787f25fc2b773.setContent(html_bd9f7472df4ba2ff07a862b3f0b17c39);
             
         
 
-        marker_a25a49be3b561ed3497b1269490db179.bindPopup(popup_6db9733b9356d8f85ae8b99123ec1384)
+        marker_94c7a691e53d245683013e58bf2920a5.bindPopup(popup_7a71b24fd605135465c787f25fc2b773)
         ;
 
         
     
     
-                marker_a25a49be3b561ed3497b1269490db179.setIcon(icon_8d4bd4c08a5d6f7c8a4adb415656e196);
+                marker_94c7a691e53d245683013e58bf2920a5.setIcon(icon_a7120873ccde9bc4ce01ceb14105ead6);
             
     
-            var marker_59f807230af0e539c01a8d03e0a08cd2 = L.marker(
-                [-15.67438, -67.48951],
+            var marker_6faaac7b7f7b3c9dcadce98ec1bd9f37 = L.marker(
+                [-21.47782, -65.76683],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_c06145f0dd83f34bacf46bfc449d8949 = L.AwesomeMarkers.icon(
+            var icon_75c19fd08dbe5ed84280802ad89361c2 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -852,34 +852,34 @@
             );
         
     
-        var popup_fa2180344d362ec26e1c0763dbe3a689 = L.popup({
+        var popup_aef51f20834b6ed70afe5eef13ab75dd = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_99d6c56db95e34418daa27b18ffbb973 = $(`<div id="html_99d6c56db95e34418daa27b18ffbb973" style="width: 100.0%; height: 100.0%;"><b>CO_MULA_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_fa2180344d362ec26e1c0763dbe3a689.setContent(html_99d6c56db95e34418daa27b18ffbb973);
+                var html_14be4e64bc8cd8e251b9c1f00c4c2698 = $(`<div id="html_14be4e64bc8cd8e251b9c1f00c4c2698" style="width: 100.0%; height: 100.0%;"><b>PINOS_DALIAS</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_aef51f20834b6ed70afe5eef13ab75dd.setContent(html_14be4e64bc8cd8e251b9c1f00c4c2698);
             
         
 
-        marker_59f807230af0e539c01a8d03e0a08cd2.bindPopup(popup_fa2180344d362ec26e1c0763dbe3a689)
+        marker_6faaac7b7f7b3c9dcadce98ec1bd9f37.bindPopup(popup_aef51f20834b6ed70afe5eef13ab75dd)
         ;
 
         
     
     
-                marker_59f807230af0e539c01a8d03e0a08cd2.setIcon(icon_c06145f0dd83f34bacf46bfc449d8949);
+                marker_6faaac7b7f7b3c9dcadce98ec1bd9f37.setIcon(icon_75c19fd08dbe5ed84280802ad89361c2);
             
     
-            var marker_c4836cce2166731975939f6d91245c4b = L.marker(
-                [-15.50837, -67.26244],
+            var marker_4fba4d32f596444530efdbea3f8852a5 = L.marker(
+                [-15.94394, -65.74505],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_83b77b38373d2eb62c6c4170970a6d93 = L.AwesomeMarkers.icon(
+            var icon_1ae9566c701d321645a694814a425f46 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -890,34 +890,34 @@
             );
         
     
-        var popup_b7aa482ae9b8d6429c9467d26f239779 = L.popup({
+        var popup_81d90b2fd10188a56aba7c44e35a5556 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_6eda9abe98841fe5e3c6d8d5ae947c5b = $(`<div id="html_6eda9abe98841fe5e3c6d8d5ae947c5b" style="width: 100.0%; height: 100.0%;"><b>INICUA_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_b7aa482ae9b8d6429c9467d26f239779.setContent(html_6eda9abe98841fe5e3c6d8d5ae947c5b);
+                var html_0ca59885e2dfe9ef7bd1fb04eb2f5158 = $(`<div id="html_0ca59885e2dfe9ef7bd1fb04eb2f5158" style="width: 100.0%; height: 100.0%;"><b>VILLA_MECANICOS</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_81d90b2fd10188a56aba7c44e35a5556.setContent(html_0ca59885e2dfe9ef7bd1fb04eb2f5158);
             
         
 
-        marker_c4836cce2166731975939f6d91245c4b.bindPopup(popup_b7aa482ae9b8d6429c9467d26f239779)
+        marker_4fba4d32f596444530efdbea3f8852a5.bindPopup(popup_81d90b2fd10188a56aba7c44e35a5556)
         ;
 
         
     
     
-                marker_c4836cce2166731975939f6d91245c4b.setIcon(icon_83b77b38373d2eb62c6c4170970a6d93);
+                marker_4fba4d32f596444530efdbea3f8852a5.setIcon(icon_1ae9566c701d321645a694814a425f46);
             
     
-            var marker_eed6dbe0a56abde514e69e271f23d2e4 = L.marker(
-                [-15.64897, -67.29969],
+            var marker_0788c2d44dea67415453d79064045c14 = L.marker(
+                [-19.03024, -65.76206],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_e512c565804cdf95298b0067bd362e56 = L.AwesomeMarkers.icon(
+            var icon_a64fd24c667d6c665f6533810dc3a912 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -928,34 +928,34 @@
             );
         
     
-        var popup_be13a912e547d09c7423582238f74fb7 = L.popup({
+        var popup_afaf1e4f0629b23e9b85d4d84507f4db = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_96ad5396b6719bdb801462570c0728ca = $(`<div id="html_96ad5396b6719bdb801462570c0728ca" style="width: 100.0%; height: 100.0%;"><b>ALTO_MERCEDES_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_be13a912e547d09c7423582238f74fb7.setContent(html_96ad5396b6719bdb801462570c0728ca);
+                var html_75014939ddbc31b2cef7bf6a2eced52f = $(`<div id="html_75014939ddbc31b2cef7bf6a2eced52f" style="width: 100.0%; height: 100.0%;"><b>STADIUM_POTOSI_PCC3</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_afaf1e4f0629b23e9b85d4d84507f4db.setContent(html_75014939ddbc31b2cef7bf6a2eced52f);
             
         
 
-        marker_eed6dbe0a56abde514e69e271f23d2e4.bindPopup(popup_be13a912e547d09c7423582238f74fb7)
+        marker_0788c2d44dea67415453d79064045c14.bindPopup(popup_afaf1e4f0629b23e9b85d4d84507f4db)
         ;
 
         
     
     
-                marker_eed6dbe0a56abde514e69e271f23d2e4.setIcon(icon_e512c565804cdf95298b0067bd362e56);
+                marker_0788c2d44dea67415453d79064045c14.setIcon(icon_a64fd24c667d6c665f6533810dc3a912);
             
     
-            var marker_b89407605cceed6b52d5af28fe8faf57 = L.marker(
-                [-15.85196, -66.93816],
+            var marker_52fe6981e79358e795083d0d766ccb4a = L.marker(
+                [-15.94394, -65.76543],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_a6155999b944095f3e89bd609da38d52 = L.AwesomeMarkers.icon(
+            var icon_d045ab209c75469a4fef963a099bac80 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -966,34 +966,34 @@
             );
         
     
-        var popup_3f5beacb164fe5c5e02ca649df33f659 = L.popup({
+        var popup_5d5d6e5697df9a94c3ba9849fcd7e69a = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_3d060e8f14b7f95e1e9a28a768691568 = $(`<div id="html_3d060e8f14b7f95e1e9a28a768691568" style="width: 100.0%; height: 100.0%;"><b>VILLA_EL_TRIUNFO_IRB1_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_3f5beacb164fe5c5e02ca649df33f659.setContent(html_3d060e8f14b7f95e1e9a28a768691568);
+                var html_5f9651e7bd58e61e6b4aa54763f5d256 = $(`<div id="html_5f9651e7bd58e61e6b4aa54763f5d256" style="width: 100.0%; height: 100.0%;"><b>VILLA_ARGENTINA</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_5d5d6e5697df9a94c3ba9849fcd7e69a.setContent(html_5f9651e7bd58e61e6b4aa54763f5d256);
             
         
 
-        marker_b89407605cceed6b52d5af28fe8faf57.bindPopup(popup_3f5beacb164fe5c5e02ca649df33f659)
+        marker_52fe6981e79358e795083d0d766ccb4a.bindPopup(popup_5d5d6e5697df9a94c3ba9849fcd7e69a)
         ;
 
         
     
     
-                marker_b89407605cceed6b52d5af28fe8faf57.setIcon(icon_a6155999b944095f3e89bd609da38d52);
+                marker_52fe6981e79358e795083d0d766ccb4a.setIcon(icon_d045ab209c75469a4fef963a099bac80);
             
     
-            var marker_d26e6384ba6729d30a4268aea055e9a2 = L.marker(
-                [-15.75772, -67.52308],
+            var marker_3ae4b2b675b937a1f13fa6bed911c7b1 = L.marker(
+                [-17.09166, -65.76683],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_485da916f130df4f8211007bb12df6ca = L.AwesomeMarkers.icon(
+            var icon_ea3db9d0408c383cbb87cf0cc450a680 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1004,34 +1004,34 @@
             );
         
     
-        var popup_6f997f42fb655b01d4fd2348e170bc11 = L.popup({
+        var popup_13c60392b1ca9039ecf8eb62e21b1caa = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_37ab047841cd2a9648e9ecc53ade7091 = $(`<div id="html_37ab047841cd2a9648e9ecc53ade7091" style="width: 100.0%; height: 100.0%;"><b>BAJO_ISRAEL_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_6f997f42fb655b01d4fd2348e170bc11.setContent(html_37ab047841cd2a9648e9ecc53ade7091);
+                var html_390aa9be6e0b5425e85a71983d1d3b6e = $(`<div id="html_390aa9be6e0b5425e85a71983d1d3b6e" style="width: 100.0%; height: 100.0%;"><b>LOS_PINOS_DALIAS_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_13c60392b1ca9039ecf8eb62e21b1caa.setContent(html_390aa9be6e0b5425e85a71983d1d3b6e);
             
         
 
-        marker_d26e6384ba6729d30a4268aea055e9a2.bindPopup(popup_6f997f42fb655b01d4fd2348e170bc11)
+        marker_3ae4b2b675b937a1f13fa6bed911c7b1.bindPopup(popup_13c60392b1ca9039ecf8eb62e21b1caa)
         ;
 
         
     
     
-                marker_d26e6384ba6729d30a4268aea055e9a2.setIcon(icon_485da916f130df4f8211007bb12df6ca);
+                marker_3ae4b2b675b937a1f13fa6bed911c7b1.setIcon(icon_ea3db9d0408c383cbb87cf0cc450a680);
             
     
-            var marker_0c160b20cddf71e5f38634af43816bbd = L.marker(
-                [-15.8482, -67.4101],
+            var marker_974d9e09931a21b11b547fbf8eed0ac0 = L.marker(
+                [-17.44897, -65.75986],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_a968ee32c9bef6dccd2f8d8f9d3fbbb1 = L.AwesomeMarkers.icon(
+            var icon_4255997d0203d18cca30815db3d3d1c9 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1042,34 +1042,34 @@
             );
         
     
-        var popup_2fc28631fa31f22a60c81d97e8597462 = L.popup({
+        var popup_829231a30febbb9554b5a188eafcec78 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_3afd05b87580877deefa27fdd41b1302 = $(`<div id="html_3afd05b87580877deefa27fdd41b1302" style="width: 100.0%; height: 100.0%;"><b>TUPAC_AMARU_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_2fc28631fa31f22a60c81d97e8597462.setContent(html_3afd05b87580877deefa27fdd41b1302);
+                var html_8bb7f834fbcc5bedc978478583c4cc2e = $(`<div id="html_8bb7f834fbcc5bedc978478583c4cc2e" style="width: 100.0%; height: 100.0%;"><b>DELICIAS_PTS</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_829231a30febbb9554b5a188eafcec78.setContent(html_8bb7f834fbcc5bedc978478583c4cc2e);
             
         
 
-        marker_0c160b20cddf71e5f38634af43816bbd.bindPopup(popup_2fc28631fa31f22a60c81d97e8597462)
+        marker_974d9e09931a21b11b547fbf8eed0ac0.bindPopup(popup_829231a30febbb9554b5a188eafcec78)
         ;
 
         
     
     
-                marker_0c160b20cddf71e5f38634af43816bbd.setIcon(icon_a968ee32c9bef6dccd2f8d8f9d3fbbb1);
+                marker_974d9e09931a21b11b547fbf8eed0ac0.setIcon(icon_4255997d0203d18cca30815db3d3d1c9);
             
     
-            var marker_32b57e5d08a19e9fae508b4a07121535 = L.marker(
-                [-15.79509, -67.65501],
+            var marker_9dda0e4b7f95c5e6c1fe08033bf4e51a = L.marker(
+                [-17.44897, -65.74966],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_0bed7fe307bb66674e2d805ea5fd8a6c = L.AwesomeMarkers.icon(
+            var icon_d2c39435e0300d57f28e82acd01fe205 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1080,34 +1080,34 @@
             );
         
     
-        var popup_e4d902b5d9ddd91d8cc52d72d0595e68 = L.popup({
+        var popup_34235a4ef70d3b26762fef0e33f0bfe3 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_e9bf21e1ada56b64b438f4967962a0a0 = $(`<div id="html_e9bf21e1ada56b64b438f4967962a0a0" style="width: 100.0%; height: 100.0%;"><b>SAN_JORGE_1RO_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_e4d902b5d9ddd91d8cc52d72d0595e68.setContent(html_e9bf21e1ada56b64b438f4967962a0a0);
+                var html_0d3f88b9aeaccd1ee9e350f07659b34a = $(`<div id="html_0d3f88b9aeaccd1ee9e350f07659b34a" style="width: 100.0%; height: 100.0%;"><b>CERVECERIA</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_34235a4ef70d3b26762fef0e33f0bfe3.setContent(html_0d3f88b9aeaccd1ee9e350f07659b34a);
             
         
 
-        marker_32b57e5d08a19e9fae508b4a07121535.bindPopup(popup_e4d902b5d9ddd91d8cc52d72d0595e68)
+        marker_9dda0e4b7f95c5e6c1fe08033bf4e51a.bindPopup(popup_34235a4ef70d3b26762fef0e33f0bfe3)
         ;
 
         
     
     
-                marker_32b57e5d08a19e9fae508b4a07121535.setIcon(icon_0bed7fe307bb66674e2d805ea5fd8a6c);
+                marker_9dda0e4b7f95c5e6c1fe08033bf4e51a.setIcon(icon_d2c39435e0300d57f28e82acd01fe205);
             
     
-            var marker_2dbd31db62d5d0f17cd0891237938b22 = L.marker(
-                [-15.64571, -67.38689],
+            var marker_2a3f686f4629a4d1de6d3c9bc1528459 = L.marker(
+                [-19.04302, -65.74647],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_d8fe7d4839362e7bc9ad8d0444618a8d = L.AwesomeMarkers.icon(
+            var icon_f9c762a2a362a07b2bb796bc4423db20 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1118,34 +1118,34 @@
             );
         
     
-        var popup_20b323f27cde3990f7d36c897d1f7c61 = L.popup({
+        var popup_c99bc4768db8baec90143f8287515cb2 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_1de983d5ed4e53db0d2ff0112f443603 = $(`<div id="html_1de983d5ed4e53db0d2ff0112f443603" style="width: 100.0%; height: 100.0%;"><b>SAN_JUAN_DE_PIQUENDO_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_20b323f27cde3990f7d36c897d1f7c61.setContent(html_1de983d5ed4e53db0d2ff0112f443603);
+                var html_9cbce6afeb88c2761f4ea0aab90bd670 = $(`<div id="html_9cbce6afeb88c2761f4ea0aab90bd670" style="width: 100.0%; height: 100.0%;"><b>ZONA_ALTIPAMPA_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_c99bc4768db8baec90143f8287515cb2.setContent(html_9cbce6afeb88c2761f4ea0aab90bd670);
             
         
 
-        marker_2dbd31db62d5d0f17cd0891237938b22.bindPopup(popup_20b323f27cde3990f7d36c897d1f7c61)
+        marker_2a3f686f4629a4d1de6d3c9bc1528459.bindPopup(popup_c99bc4768db8baec90143f8287515cb2)
         ;
 
         
     
     
-                marker_2dbd31db62d5d0f17cd0891237938b22.setIcon(icon_d8fe7d4839362e7bc9ad8d0444618a8d);
+                marker_2a3f686f4629a4d1de6d3c9bc1528459.setIcon(icon_f9c762a2a362a07b2bb796bc4423db20);
             
     
-            var marker_d11e1bd5a425573af727bc9fa94b524b = L.marker(
-                [-15.56301, -67.37601],
+            var marker_92a404acd0d8bd1aa3e7b5de408a4a36 = L.marker(
+                [-17.75187, -65.76184],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_f73105e55e193c7911a01ddbe02d7808 = L.AwesomeMarkers.icon(
+            var icon_72ec612bd9b7d3edb447924e6ea503fa = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1156,34 +1156,34 @@
             );
         
     
-        var popup_0ab565ca4f349883c8925af34a8c79a5 = L.popup({
+        var popup_f85162cdbb8ff177abb9b37876604e04 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_6325a070556ceca6b5b41e27df171014 = $(`<div id="html_6325a070556ceca6b5b41e27df171014" style="width: 100.0%; height: 100.0%;"><b>PUENTE_ALTO_BENI_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_0ab565ca4f349883c8925af34a8c79a5.setContent(html_6325a070556ceca6b5b41e27df171014);
+                var html_c87be992cdb587a99ecdfcc4ee46913b = $(`<div id="html_c87be992cdb587a99ecdfcc4ee46913b" style="width: 100.0%; height: 100.0%;"><b>AV_LAS_BANDERAS_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_f85162cdbb8ff177abb9b37876604e04.setContent(html_c87be992cdb587a99ecdfcc4ee46913b);
             
         
 
-        marker_d11e1bd5a425573af727bc9fa94b524b.bindPopup(popup_0ab565ca4f349883c8925af34a8c79a5)
+        marker_92a404acd0d8bd1aa3e7b5de408a4a36.bindPopup(popup_f85162cdbb8ff177abb9b37876604e04)
         ;
 
         
     
     
-                marker_d11e1bd5a425573af727bc9fa94b524b.setIcon(icon_f73105e55e193c7911a01ddbe02d7808);
+                marker_92a404acd0d8bd1aa3e7b5de408a4a36.setIcon(icon_72ec612bd9b7d3edb447924e6ea503fa);
             
     
-            var marker_07bb7a6b0764b31869574bb46479e109 = L.marker(
-                [-15.73875, -67.48506],
+            var marker_83b522b9c38015ae8a2193a64be6dc3b = L.marker(
+                [-17.44897, -65.75986],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_2bdffd58b50af1fd93049396f03a57ca = L.AwesomeMarkers.icon(
+            var icon_efb781ca15c55cca32963ce9254df0b5 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1194,34 +1194,34 @@
             );
         
     
-        var popup_7fe453cfe891ed1a124e6be8f269d93c = L.popup({
+        var popup_07a9348e7c4f8869c34d9bb63f38eda8 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_626152b482d2115a69de3a46d7e4d4e6 = $(`<div id="html_626152b482d2115a69de3a46d7e4d4e6" style="width: 100.0%; height: 100.0%;"><b>NUEVA_ESPERANZA_LPZ_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_7fe453cfe891ed1a124e6be8f269d93c.setContent(html_626152b482d2115a69de3a46d7e4d4e6);
+                var html_0e21d4204a53ac19c5daf01ffcaa185e = $(`<div id="html_0e21d4204a53ac19c5daf01ffcaa185e" style="width: 100.0%; height: 100.0%;"><b>DELICIAS_PTS_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_07a9348e7c4f8869c34d9bb63f38eda8.setContent(html_0e21d4204a53ac19c5daf01ffcaa185e);
             
         
 
-        marker_07bb7a6b0764b31869574bb46479e109.bindPopup(popup_7fe453cfe891ed1a124e6be8f269d93c)
+        marker_83b522b9c38015ae8a2193a64be6dc3b.bindPopup(popup_07a9348e7c4f8869c34d9bb63f38eda8)
         ;
 
         
     
     
-                marker_07bb7a6b0764b31869574bb46479e109.setIcon(icon_2bdffd58b50af1fd93049396f03a57ca);
+                marker_83b522b9c38015ae8a2193a64be6dc3b.setIcon(icon_efb781ca15c55cca32963ce9254df0b5);
             
     
-            var marker_e7be6ee504c71d9a9138dfbebf5bf7f4 = L.marker(
-                [-15.87362, -67.54663],
+            var marker_200a9daf5a99ce265ac989aa4acf3149 = L.marker(
+                [-17.75187, -65.76356],
                 {
 }
-            ).addTo(marker_cluster_4ecd919000c8227daa2ab126ad4647dc);
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
         
     
-            var icon_6eb35490f98e1db9bbf9ca3ea8002e71 = L.AwesomeMarkers.icon(
+            var icon_149c992a181e7e95206ffaf690294a23 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1232,27 +1232,407 @@
             );
         
     
-        var popup_f4d3baca0095a1b9f670e353388ab2c8 = L.popup({
+        var popup_e3514ccb2fb6688c6a5969de94353ba6 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_00ee2ce41d8f03eb02662a8c4a590ef4 = $(`<div id="html_00ee2ce41d8f03eb02662a8c4a590ef4" style="width: 100.0%; height: 100.0%;"><b>ALTO_AGUA_RICA_IRB2_4G</b><br>Categoría: Sin categoría</div>`)[0];
-                popup_f4d3baca0095a1b9f670e353388ab2c8.setContent(html_00ee2ce41d8f03eb02662a8c4a590ef4);
+                var html_01f7c7928e68a2248dd16b834a25782f = $(`<div id="html_01f7c7928e68a2248dd16b834a25782f" style="width: 100.0%; height: 100.0%;"><b>AVENIDA_AMERICA_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_e3514ccb2fb6688c6a5969de94353ba6.setContent(html_01f7c7928e68a2248dd16b834a25782f);
             
         
 
-        marker_e7be6ee504c71d9a9138dfbebf5bf7f4.bindPopup(popup_f4d3baca0095a1b9f670e353388ab2c8)
+        marker_200a9daf5a99ce265ac989aa4acf3149.bindPopup(popup_e3514ccb2fb6688c6a5969de94353ba6)
         ;
 
         
     
     
-                marker_e7be6ee504c71d9a9138dfbebf5bf7f4.setIcon(icon_6eb35490f98e1db9bbf9ca3ea8002e71);
+                marker_200a9daf5a99ce265ac989aa4acf3149.setIcon(icon_149c992a181e7e95206ffaf690294a23);
             
     
-            marker_cluster_4ecd919000c8227daa2ab126ad4647dc.addTo(map_579fdc723c5ed50702f3e92734609ee2);
+            var marker_ef190121bf6c6dfa0c7a620945bc0f3b = L.marker(
+                [-17.75187, -65.75645],
+                {
+}
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
+        
+    
+            var icon_0d6ef47389b9fcfa6a723e1d65558f15 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6cfc20de2e7b4bbfb7430721669f0c43 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e877b1097907f7b5d866798684a99db0 = $(`<div id="html_e877b1097907f7b5d866798684a99db0" style="width: 100.0%; height: 100.0%;"><b>ARCE_POTOSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_6cfc20de2e7b4bbfb7430721669f0c43.setContent(html_e877b1097907f7b5d866798684a99db0);
+            
+        
+
+        marker_ef190121bf6c6dfa0c7a620945bc0f3b.bindPopup(popup_6cfc20de2e7b4bbfb7430721669f0c43)
+        ;
+
+        
+    
+    
+                marker_ef190121bf6c6dfa0c7a620945bc0f3b.setIcon(icon_0d6ef47389b9fcfa6a723e1d65558f15);
+            
+    
+            var marker_bcd966c6358ac10fc2b380872b1fc6fe = L.marker(
+                [-17.44897, -65.74966],
+                {
+}
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
+        
+    
+            var icon_80e01db849a354c290cfe52732d15423 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8260e8ade7368902682c0f0e2e8f726a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a0641c75c24c8ec3f8a013f3d7a745df = $(`<div id="html_a0641c75c24c8ec3f8a013f3d7a745df" style="width: 100.0%; height: 100.0%;"><b>CERVECERIA_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_8260e8ade7368902682c0f0e2e8f726a.setContent(html_a0641c75c24c8ec3f8a013f3d7a745df);
+            
+        
+
+        marker_bcd966c6358ac10fc2b380872b1fc6fe.bindPopup(popup_8260e8ade7368902682c0f0e2e8f726a)
+        ;
+
+        
+    
+    
+                marker_bcd966c6358ac10fc2b380872b1fc6fe.setIcon(icon_80e01db849a354c290cfe52732d15423);
+            
+    
+            var marker_e72c9843e393c7b6731f19305b5aaacc = L.marker(
+                [-21.47782, -65.77144],
+                {
+}
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
+        
+    
+            var icon_459821e1345495de0db0a5ac14e80a23 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_329e8031dbb58b6e397c3bc39f690310 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_103f445d61a5720dbb49b3bc5980e72f = $(`<div id="html_103f445d61a5720dbb49b3bc5980e72f" style="width: 100.0%; height: 100.0%;"><b>PLAN40_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_329e8031dbb58b6e397c3bc39f690310.setContent(html_103f445d61a5720dbb49b3bc5980e72f);
+            
+        
+
+        marker_e72c9843e393c7b6731f19305b5aaacc.bindPopup(popup_329e8031dbb58b6e397c3bc39f690310)
+        ;
+
+        
+    
+    
+                marker_e72c9843e393c7b6731f19305b5aaacc.setIcon(icon_459821e1345495de0db0a5ac14e80a23);
+            
+    
+            var marker_234209b67069da2d10ae3696806caf75 = L.marker(
+                [-19.57474, -65.75391],
+                {
+}
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
+        
+    
+            var icon_d416f9d9e43c38bde37dbb0207c2e06d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_191b67b3270629f656d0a9bd6391250c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9b50c136b7520320a7a44f0204492327 = $(`<div id="html_9b50c136b7520320a7a44f0204492327" style="width: 100.0%; height: 100.0%;"><b>NORMAL_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_191b67b3270629f656d0a9bd6391250c.setContent(html_9b50c136b7520320a7a44f0204492327);
+            
+        
+
+        marker_234209b67069da2d10ae3696806caf75.bindPopup(popup_191b67b3270629f656d0a9bd6391250c)
+        ;
+
+        
+    
+    
+                marker_234209b67069da2d10ae3696806caf75.setIcon(icon_d416f9d9e43c38bde37dbb0207c2e06d);
+            
+    
+            var marker_4ed0e8dae551ef52878713cbff031327 = L.marker(
+                [-15.94394, -65.74505],
+                {
+}
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
+        
+    
+            var icon_254e33237f8bd1187192e81d7f78b4ae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_85a4b34fff1e1ff59716db7bc24407f4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_507f4b74708e215e62a353583087d624 = $(`<div id="html_507f4b74708e215e62a353583087d624" style="width: 100.0%; height: 100.0%;"><b>VILLA_MECANICOS_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_85a4b34fff1e1ff59716db7bc24407f4.setContent(html_507f4b74708e215e62a353583087d624);
+            
+        
+
+        marker_4ed0e8dae551ef52878713cbff031327.bindPopup(popup_85a4b34fff1e1ff59716db7bc24407f4)
+        ;
+
+        
+    
+    
+                marker_4ed0e8dae551ef52878713cbff031327.setIcon(icon_254e33237f8bd1187192e81d7f78b4ae);
+            
+    
+            var marker_895e5be206302fbd301d778063cab9f2 = L.marker(
+                [-19.56664, -65.7626],
+                {
+}
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
+        
+    
+            var icon_3c4b7dbe8b6872b2334380356ef0cc40 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_be8a7324fa15ad1f5339060712f0139c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0c325184ab780b0ed7b26936f5eefe08 = $(`<div id="html_0c325184ab780b0ed7b26936f5eefe08" style="width: 100.0%; height: 100.0%;"><b>LOS_PINOS_POTOSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_be8a7324fa15ad1f5339060712f0139c.setContent(html_0c325184ab780b0ed7b26936f5eefe08);
+            
+        
+
+        marker_895e5be206302fbd301d778063cab9f2.bindPopup(popup_be8a7324fa15ad1f5339060712f0139c)
+        ;
+
+        
+    
+    
+                marker_895e5be206302fbd301d778063cab9f2.setIcon(icon_3c4b7dbe8b6872b2334380356ef0cc40);
+            
+    
+            var marker_a3308217d71b7b22dbbe25fec4104d3c = L.marker(
+                [-17.75187, -65.76041],
+                {
+}
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
+        
+    
+            var icon_6e965afe436377c17dbd543144c3544d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_78cca8ac39dafe9db0ce0753e7a3d94a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fb0a6d7c91717a6096013607bc0a0a0f = $(`<div id="html_fb0a6d7c91717a6096013607bc0a0a0f" style="width: 100.0%; height: 100.0%;"><b>AMERICA_POTOSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_78cca8ac39dafe9db0ce0753e7a3d94a.setContent(html_fb0a6d7c91717a6096013607bc0a0a0f);
+            
+        
+
+        marker_a3308217d71b7b22dbbe25fec4104d3c.bindPopup(popup_78cca8ac39dafe9db0ce0753e7a3d94a)
+        ;
+
+        
+    
+    
+                marker_a3308217d71b7b22dbbe25fec4104d3c.setIcon(icon_6e965afe436377c17dbd543144c3544d);
+            
+    
+            var marker_5a4046ac15f442b1cedd9303d4d8351f = L.marker(
+                [-15.94394, -65.76543],
+                {
+}
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
+        
+    
+            var icon_7d3cdc75303fe4114062019fb2da8f0c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8ea26ab0abb06a198376f768d561ac88 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4773476b4d15b0bfd153ce6b6a201768 = $(`<div id="html_4773476b4d15b0bfd153ce6b6a201768" style="width: 100.0%; height: 100.0%;"><b>VILLA_ARGENTINA_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_8ea26ab0abb06a198376f768d561ac88.setContent(html_4773476b4d15b0bfd153ce6b6a201768);
+            
+        
+
+        marker_5a4046ac15f442b1cedd9303d4d8351f.bindPopup(popup_8ea26ab0abb06a198376f768d561ac88)
+        ;
+
+        
+    
+    
+                marker_5a4046ac15f442b1cedd9303d4d8351f.setIcon(icon_7d3cdc75303fe4114062019fb2da8f0c);
+            
+    
+            var marker_c0588ead6dfc1b1bad5059fd0f6f4693 = L.marker(
+                [-19.03024, -65.76206],
+                {
+}
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
+        
+    
+            var icon_88f0d065fe02c8e1d96c2437620489a6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_965a29471cd5d1d96e3db297cf74665a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_00dde60e32e677acadd1248ff97d4e67 = $(`<div id="html_00dde60e32e677acadd1248ff97d4e67" style="width: 100.0%; height: 100.0%;"><b>STADIUM_POTOSI_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_965a29471cd5d1d96e3db297cf74665a.setContent(html_00dde60e32e677acadd1248ff97d4e67);
+            
+        
+
+        marker_c0588ead6dfc1b1bad5059fd0f6f4693.bindPopup(popup_965a29471cd5d1d96e3db297cf74665a)
+        ;
+
+        
+    
+    
+                marker_c0588ead6dfc1b1bad5059fd0f6f4693.setIcon(icon_88f0d065fe02c8e1d96c2437620489a6);
+            
+    
+            var marker_f8cabb36ac5ae9e0d61d2780f250f07c = L.marker(
+                [-17.62891, -65.75414],
+                {
+}
+            ).addTo(marker_cluster_cf67eac9233f045c508ad29e50f22801);
+        
+    
+            var icon_2530915ec12b939acb0d752be3feab8a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_db5acea988afaf5dfbf95ea1b123f11a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_62c0dc16d32b252b1dfaf11bbd4f378b = $(`<div id="html_62c0dc16d32b252b1dfaf11bbd4f378b" style="width: 100.0%; height: 100.0%;"><b>LAS_ROSAS_4G</b><br>Categoría: Sin categoría</div>`)[0];
+                popup_db5acea988afaf5dfbf95ea1b123f11a.setContent(html_62c0dc16d32b252b1dfaf11bbd4f378b);
+            
+        
+
+        marker_f8cabb36ac5ae9e0d61d2780f250f07c.bindPopup(popup_db5acea988afaf5dfbf95ea1b123f11a)
+        ;
+
+        
+    
+    
+                marker_f8cabb36ac5ae9e0d61d2780f250f07c.setIcon(icon_2530915ec12b939acb0d752be3feab8a);
+            
+    
+            marker_cluster_cf67eac9233f045c508ad29e50f22801.addTo(map_faffdf29cf838e7591dac3eb15cd97df);
         
 </script>
 </html>
